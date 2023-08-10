@@ -6,7 +6,7 @@ from volcadoInformacion import *
 persona1 = Usuario('0', 'Admin', 'Alejandro', 'Morales', '123', '123')
 persona2 = Usuario('1', 'Vendedor', 'Gerardo', 'Luna', '125', '125')
 
-usuarios1 = []
+usuarios1 = [persona1, persona2]
 volatil = []
 
 
