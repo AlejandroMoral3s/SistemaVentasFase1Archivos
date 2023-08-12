@@ -11,6 +11,8 @@ class Login_window:
         self.dataJson = {}
         self.obtain_data_json()
 
+        self.userExists = False
+
         #Creating frames
 
         self.imageFrame = Frame(self.root, bg='red')
@@ -22,7 +24,6 @@ class Login_window:
 
         self.logo = PhotoImage(file='images/logo.png')
         self.logo = self.logo.subsample(10)
-
 
         #Create labelImage
 
@@ -69,6 +70,7 @@ class Login_window:
             if (user["username"] == self.username.get()) and (user["password"] == self.password.get()):
                 userExists = True
 
+        self.userExists = userExists
         print(userExists)
 
 
