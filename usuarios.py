@@ -1,11 +1,12 @@
 class Usuario:
 
-    def __init__(self, id, perfil, nombre, apellido, clave, confirmacion):
+    def __init__(self, id, perfil, nombre, apellido, nombreUsuario, clave, confirmacion):
         
         self.__id = id
         self.__perfil = perfil
         self.__nombre = nombre
         self.__apellido = apellido
+        self.__nombreUsuario = nombreUsuario
         self.__clave = clave
         self.__confirmacion = confirmacion
 
@@ -39,6 +40,13 @@ class Usuario:
     @apellido.setter
     def apellido(self, apellido):
         self.__apellido = apellido
+
+    @property
+    def nombreUsuario(self):
+        return self.__nombreUsuario
+    @nombreUsuario.setter
+    def nombreUsuario(self, nombreUsuario):
+        self.__nombreUsuario = nombreUsuario
 
     @property
     def clave(self):
