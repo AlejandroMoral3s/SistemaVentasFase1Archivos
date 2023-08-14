@@ -67,19 +67,18 @@ class Login_window:
     def obtain_values(self, *args):
         userExists = False
         for user in self.dataJson["users"]:
-            
             if (user["username"] == self.username.get()) and (user["password"] == self.password.get()):
                 userExists = True
 
         if userExists:
             self.root.destroy()
-            mainMenu()
+            root = Tk()
+            Main_menu(root)
+            root.mainloop()
         else:
             messagebox.showerror(message='EL USUARIO O CONTRASEÑA SON ERRONEOS, POR FAVOR VERIFICAR.', title='ERROR DE INICIO DE SESION')
 
         
-
-
 root = Tk()
 login = Login_window(root)
 root.mainloop()

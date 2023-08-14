@@ -20,7 +20,7 @@ class Main_menu():
         self.file.add_command(label='Cambio de Clave')
         self.file.add_command(label='Cambio de Usuario')
         self.file.add_separator()
-        self.file.add_command(label='Salir', command=self.root.destroy)
+        self.file.add_command(label='Salir', command=self.salir)
 
         #Creando Menu Movimientos
         self.movements = Menu(self.menu, tearoff=0)
@@ -38,8 +38,5 @@ class Main_menu():
         self.menu.add_cascade(label='MOVIMIENTOS', menu=self.movements)
         self.menu.add_cascade(label='AYUDA', menu = self.help)
 
-
-def mainMenu():
-    root = Tk()
-    Main_menu(root)
-    root.mainloop()
+    def salir(self):
+        self.root.destroy()
