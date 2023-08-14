@@ -40,3 +40,4 @@ class Main_menu():
 
     def salir(self):
         self.root.destroy()
+
