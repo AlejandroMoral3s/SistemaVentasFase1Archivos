@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 
-class Main_menu:
+class Main_menu():
 
     def __init__(self, root):
         self.root = root
@@ -39,6 +39,7 @@ class Main_menu:
         self.menu.add_cascade(label='AYUDA', menu = self.help)
 
 
-root = Tk()
-Main_menu(root)
-root.mainloop()
+def mainMenu():
+    root = Tk()
+    Main_menu(root)
+    root.mainloop()

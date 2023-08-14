@@ -1,6 +1,7 @@
 from tkinter import *
-from tkinter import ttk
+from tkinter import messagebox
 import json
+from menuPrincipal import *
 
 class Login_window:
 
@@ -70,10 +71,17 @@ class Login_window:
             if (user["username"] == self.username.get()) and (user["password"] == self.password.get()):
                 userExists = True
 
-        self.userExists = userExists
-        print(userExists)
+        if userExists:
+            self.root.destroy()
+            mainMenu()
+        else:
+            messagebox.showerror(message='EL USUARIO O CONTRASEÑA SON ERRONEOS, POR FAVOR VERIFICAR.', title='ERROR DE INICIO DE SESION')
+
+        
 
 
 root = Tk()
 login = Login_window(root)
 root.mainloop()
+
+
