@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 import json
+from interfazUsuarios import *
 
 class Login_window:
 
@@ -57,7 +58,7 @@ class Login_window:
         self.button_cancel = Button(self.dataFrame, text= 'SALIR', command=self.root.destroy)
         self.button_cancel.grid(row=2, column=1, padx=5, pady=5)
 
-    def obtain_data_json(self, *args):
+    def obtain_data_json(self):
         with open('usuarios.json', 'r') as f:
             data = f.read()
             dataJson = json.loads(data)
@@ -81,10 +82,13 @@ class Login_window:
 class Main_menu():
 
     def __init__(self, root):
+
+        #Raiz
         self.root = root
         self.root.title(f'Sistema de Ventas')
         self.root.geometry('500x200')
 
+        #Instanciando el menu archivo
         self.menu = Menu(self.root)
         self.root.config(menu = self.menu)
 
@@ -92,12 +96,12 @@ class Main_menu():
         self.file = Menu(self.menu, tearoff=0)
         self.file.add_command(label='Clientes')
         self.file.add_command(label='Productos')
-        self.file.add_command(label='Usuarios')
+        self.file.add_command(label='Usuarios', command=lambda:self.showContent(User_Interface))
         self.file.add_separator()
         self.file.add_command(label='Cambio de Clave')
-        self.file.add_command(label='Cambio de Usuario', command= self.cambioUsuario)
+        self.file.add_command(label='Cambio de Usuario', command= self.userChange)
         self.file.add_separator()
-        self.file.add_command(label='Salir', command=self.salir)
+        self.file.add_command(label='Salir', command=self.out)
 
         #Creando Menu Movimientos
         self.movements = Menu(self.menu, tearoff=0)
@@ -115,15 +119,22 @@ class Main_menu():
         self.menu.add_cascade(label='MOVIMIENTOS', menu=self.movements)
         self.menu.add_cascade(label='AYUDA', menu = self.help)
 
-    def salir(self):
-        self.root.destroy()      
+        self.frameUsuarios = Frame(self.root)
+        self.frameUsuarios.grid(sticky=N+S+E+W)
+
+    def showContent(self, frameUsuarios):
+        self.frameUsuarios.destroy()
+        self.frameUsuarios = frameUsuarios(self.root)
+        self.frameUsuarios.grid(sticky=N+S+E+W)
         
-    def cambioUsuario(self):
+    def userChange(self):
         self.root.destroy()
         log = Tk()
         Login_window(log)
         log.mainloop() 
 
+    def out(self):
+        self.root.destroy() 
 
 root = Tk()
 login = Login_window(root)
