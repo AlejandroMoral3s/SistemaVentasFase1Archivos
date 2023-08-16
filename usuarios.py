@@ -1,7 +1,6 @@
 class Usuario:
 
-    def __init__(self, id, perfil, nombre, apellido,username, clave, confirmacion):
-        
+    def __init__(self, id, perfil, nombre, apellido,username, clave, confirmacion):        
         self.__id = id
         self.__perfil = perfil
         self.__nombre = nombre
@@ -11,7 +10,7 @@ class Usuario:
         self.__confirmacion = confirmacion
 
     def __str__(self):
-        return f'ID [ {self.__id} ] PERFIL [ {self.__perfil} ] NOMBRE [ {self.__nombre} ] APELLIDO [ {self.__apellido} ] CLAVE [ {self.__clave} ] CONFIRMACION [ {self.__confirmacion} ]'
+        return f'ID [ {self.__id} ] PERFIL [ {self.__perfil} ] NOMBRE [ {self.__nombre} ] APELLIDO [ {self.__apellido} ] USERNAME [ {self.__username} ] CLAVE [ {self.__clave} ] CONFIRMACION [ {self.__confirmacion} ]'
 
     @property
     def id(self):

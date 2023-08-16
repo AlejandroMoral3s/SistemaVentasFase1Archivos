@@ -22,9 +22,9 @@ class ClientesList:
             json.dump(self.dataJson,file,indent=4)
         
     
-    def buscarCliente(self, dpi):    
+    def buscarCliente(self, num):    
         for cliente in self.dataJson['clients']:
-            if(cliente['_Cliente__dpi']==dpi):
+            if(cliente['_Cliente__numDocumento']==num):
                 return cliente
         return None
     
@@ -34,17 +34,19 @@ class ClientesList:
         
     
     #crea un objeto Cliente, lo agrega al array y por ultimo actualiza el json    
-    def crearCliente(self, id, dpi, nombre, apellido, direccion, telefono, ciudad, fechaNac, fechaIng):
-        if(self.buscarCliente(dpi)!=None): 
+    def crearCliente(self, id,tipoDocumento,numDocumento, nombre, apellido, direccion, telefono, ciudad, fechaNac, fechaIng):
+        if(self.buscarCliente(numDocumento)!=None): 
             print("Este cliente ya existe")
         else:
-            cliente= Cliente(id, dpi, nombre, apellido, direccion, telefono, ciudad, fechaNac, fechaIng)
+            cliente= Cliente(id,tipoDocumento,numDocumento, nombre, apellido, direccion, telefono, ciudad, fechaNac, fechaIng)
             clienteDict = vars(cliente)
             self.agregarDict(clienteDict)
     
-    def editarCliente(self, dpi, nombre, apellido, direccion, telefono, ciudad, fechaNac, fechaIng):
-        cliTemp=self.buscarCliente(dpi)
-        if(cliTemp!=None):
+    def editarCliente(self,tipoDocumento,numDocumento, nombre, apellido, direccion, telefono, ciudad, fechaNac, fechaIng):
+        cliTemp=self.buscarCliente(numDocumento)
+        if(cliTemp!=None):            
+            cliTemp['_Cliente__tipoDocumento'] = tipoDocumento     
+            cliTemp['_Cliente__numDocumento'] = numDocumento
             cliTemp['_Cliente__nombre'] = nombre
             cliTemp['_Cliente__apellido'] = apellido
             cliTemp['_Cliente__direccion'] = direccion
@@ -56,8 +58,8 @@ class ClientesList:
         else:
             print("Este cliente no existe")
     
-    def borrarCliente(self, dpi):
-        cliTemp = self.buscarCliente(dpi)
+    def borrarCliente(self, numDoc):
+        cliTemp = self.buscarCliente(numDoc)
         if(cliTemp!=None):
             self.dataJson['clients'].remove(cliTemp)
             self.guardar()
@@ -66,5 +68,5 @@ class ClientesList:
 
 
 clienteL=ClientesList()
-clienteL.crearCliente(12,"8965","Juan","Lopez","zona 2","4587966","xela","24/04/2003","12/08/2023")
-#clienteL.borrarCliente(8965)
+clienteL.editarCliente("DPI","54654658965","Pepe","Garcia","zona 2","4587966","xela","24/04/2003","12/08/2023")
+#clienteL.borrarCliente("558965")

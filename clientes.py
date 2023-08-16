@@ -1,8 +1,9 @@
 class Cliente:
 
-    def __init__(self, id, dpi, nombre, apellido, direccion, telefono, ciudad, fechaNac, fechaIng):
+    def __init__(self, id,tipoDocumento,numDocumento, nombre, apellido, direccion, telefono, ciudad, fechaNac, fechaIng):
         self.__id = id
-        self.__dpi = dpi
+        self.__tipoDocumento = tipoDocumento
+        self.__numDocumento = numDocumento
         self.__nombre = nombre
         self.__apellido = apellido
         self.__direccion = direccion
@@ -12,7 +13,7 @@ class Cliente:
         self.__fechaIng = fechaIng
 
     def __str__(self):
-        return f'ID [ {self.__id} ] DPI [ {self.__dpi} ] NOMBRE [ {self.__nombre} ] APELLIDO [ {self.__apellido} ] DIRECCION [ {self.__direccion} ] TELEFONO [ {self.__telefono} ] CIUDAD [ {self.__ciudad} ] FECHA_NAC [ {self.__fechaNac} ] FECHA_ING [ {self.__fechaIng} ]'
+        return f'ID [ {self.__id} ] TIPO DOCUMENTO [ {self.__tipoDocumento} ] NO. DOCUMENTO [ {self.__numDocumento} ] NOMBRE [ {self.__nombre} ] APELLIDO [ {self.__apellido} ] DIRECCION [ {self.__direccion} ] TELEFONO [ {self.__telefono} ] CIUDAD [ {self.__ciudad} ] FECHA_NAC [ {self.__fechaNac} ] FECHA_ING [ {self.__fechaIng} ]'
     
 
     @property

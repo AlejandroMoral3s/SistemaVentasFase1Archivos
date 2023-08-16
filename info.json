@@ -13,9 +13,10 @@
     "clients": [
         {
             "_Cliente__id": 12,
-            "_Cliente__dpi": "8965",
-            "_Cliente__nombre": "Juan",
-            "_Cliente__apellido": "Lopez",
+            "_Cliente__tipoDocumento": "DPI",
+            "_Cliente__numDocumento": "54654658965",
+            "_Cliente__nombre": "Pepe",
+            "_Cliente__apellido": "Garcia",
             "_Cliente__direccion": "zona 2",
             "_Cliente__telefono": "4587966",
             "_Cliente__ciudad": "xela",
