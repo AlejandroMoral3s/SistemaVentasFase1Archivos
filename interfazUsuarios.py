@@ -118,6 +118,3 @@ class User_Interface:
         for x in range(0, 20):
             self.tree.insert('', 'end', values=(str(x), 'Maria', 'De los Angeles', 'Administrador')) 
 
-root = Tk()
-temporal = User_Interface(root)
-root.mainloop()
