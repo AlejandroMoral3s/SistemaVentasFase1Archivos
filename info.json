@@ -2,17 +2,10 @@
     "users": [
         {
             "_Usuario__id": 1,
-            "_Usuario__perfil": "marcds",
-            "_Usuario__nombre": "Maria",
-            "_Usuario__apellido": "Aguilar",
-            "_Usuario__clave": "456",
-            "_Usuario__confirmacion": "456"
-        },
-        {
-            "_Usuario__id": 2,
-            "_Usuario__perfil": "ale12",
-            "_Usuario__nombre": "Alejandro",
+            "_Usuario__perfil": "admin",
+            "_Usuario__nombre": "alejandro",
             "_Usuario__apellido": "Morales",
+            "_Usuario__username": "ale26",
             "_Usuario__clave": "123",
             "_Usuario__confirmacion": "123"
         }

@@ -22,9 +22,9 @@ class UsuariosList:
             json.dump(self.dataJson,file,indent=4)
         
     
-    def buscarUser(self, perfil):    
+    def buscarUser(self, username):    
         for usuario in self.dataJson['users']:
-            if(usuario['_Usuario__perfil']==perfil):
+            if(usuario['_Usuario__username']==username):
                 return usuario
         return None
     
@@ -34,28 +34,29 @@ class UsuariosList:
         
     
     #crea un objeto usuario, lo agrega al array y por ultimo actualiza el json    
-    def crearUsuario(self, id, perfil, nombre, apellido, clave, confirmacion):
-        if(self.buscarUser(perfil)!=None): 
+    def crearUsuario(self, id, perfil, nombre, apellido,username, clave, confirmacion):
+        if(self.buscarUser(username)!=None): 
             print("Este usuario ya existe")
         else:
-            usuario= Usuario(id, perfil, nombre, apellido, clave, confirmacion)
+            usuario= Usuario(id, perfil, nombre, apellido,username, clave, confirmacion)
             usuarioDict = vars(usuario)
             self.agregarDict(usuarioDict)
     
-    def editarUsuario(self, perfil, nombre, apellido, clave, confirmacion):
-        usTemp=self.buscarUser(perfil)
+    def editarUsuario(self, perfil, nombre, apellido,username, clave, confirmacion):
+        usTemp=self.buscarUser(username)
         if(usTemp!=None):
             usTemp['_Usuario__perfil'] = perfil
             usTemp['_Usuario__nombre'] = nombre
-            usTemp['_Usuario__apellido'] = apellido
+            usTemp['_Usuario__apellido'] = apellido            
+            usTemp['_Usuario__username'] = username
             usTemp['_Usuario__clave'] = clave
             usTemp['_Usuario__confirmacion'] = confirmacion
             self.guardar()
         else:
             print("Este usuario no existe")
     
-    def borrarUsuario(self, perfil):
-        usTemp = self.buscarUser(perfil)
+    def borrarUsuario(self, username):
+        usTemp = self.buscarUser(username)
         if(usTemp!=None):
             self.dataJson['users'].remove(usTemp)
             self.guardar()
@@ -64,3 +65,4 @@ class UsuariosList:
 
 
 usuarioL=UsuariosList()
+usuarioL.borrarUsuario("marcds")

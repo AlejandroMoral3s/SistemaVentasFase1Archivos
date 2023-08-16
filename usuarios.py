@@ -1,11 +1,12 @@
 class Usuario:
 
-    def __init__(self, id, perfil, nombre, apellido, clave, confirmacion):
+    def __init__(self, id, perfil, nombre, apellido,username, clave, confirmacion):
         
         self.__id = id
         self.__perfil = perfil
         self.__nombre = nombre
         self.__apellido = apellido
+        self.__username = username
         self.__clave = clave
         self.__confirmacion = confirmacion
 
