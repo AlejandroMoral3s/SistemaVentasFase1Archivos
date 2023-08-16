@@ -3,9 +3,11 @@ from tkinter import messagebox
 import json
 from interfazUsuarios import *
 
-class Login_window:
+class Login_window(Frame):
 
     def __init__(self, root):
+        super().__init__(root)
+        
         self.root = root
         self.root.title('Sistema de Ventas')
         
@@ -79,14 +81,14 @@ class Login_window:
             messagebox.showerror(message='EL USUARIO O CONTRASEÑA SON ERRONEOS, POR FAVOR VERIFICAR.', title='ERROR DE INICIO DE SESION')
 
 
-class Main_menu():
+class Main_menu(Frame):
 
     def __init__(self, root):
+        super().__init__(root)
 
-        #Raiz
         self.root = root
         self.root.title(f'Sistema de Ventas')
-        self.root.geometry('500x200')
+        self.root.geometry('500x250')
 
         #Instanciando el menu archivo
         self.menu = Menu(self.root)
@@ -96,7 +98,7 @@ class Main_menu():
         self.file = Menu(self.menu, tearoff=0)
         self.file.add_command(label='Clientes')
         self.file.add_command(label='Productos')
-        self.file.add_command(label='Usuarios', command=lambda:self.showContent(User_Interface))
+        self.file.add_command(label='Usuarios', command=self.display_ui)
         self.file.add_separator()
         self.file.add_command(label='Cambio de Clave')
         self.file.add_command(label='Cambio de Usuario', command= self.userChange)
@@ -118,14 +120,11 @@ class Main_menu():
         self.menu.add_cascade(label='ARCHIVO', menu=self.file)
         self.menu.add_cascade(label='MOVIMIENTOS', menu=self.movements)
         self.menu.add_cascade(label='AYUDA', menu = self.help)
-
-        self.frameUsuarios = Frame(self.root)
-        self.frameUsuarios.grid(sticky=N+S+E+W)
-
-    def showContent(self, frameUsuarios):
-        self.frameUsuarios.destroy()
-        self.frameUsuarios = frameUsuarios(self.root)
-        self.frameUsuarios.grid(sticky=N+S+E+W)
+        
+    def display_ui(self):
+        root = Tk()
+        User_Interface(root)
+        root.mainloop()
         
     def userChange(self):
         self.root.destroy()
