@@ -44,6 +44,15 @@
             "_Usuario__nombreUsuario": "pablo12",
             "_Usuario__clave": "123",
             "_Usuario__confirmacion": "123"
+        },
+        {
+            "_Usuario__id": "6",
+            "_Usuario__perfil": "Vendedor",
+            "_Usuario__nombre": "maria",
+            "_Usuario__apellido": "rivera",
+            "_Usuario__nombreUsuario": "maria15",
+            "_Usuario__clave": "124",
+            "_Usuario__confirmacion": "124"
         }
     ],
     "clients": [
