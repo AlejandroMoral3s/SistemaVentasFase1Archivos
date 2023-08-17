@@ -11,7 +11,7 @@
         },
         {
             "_Usuario__id": 2,
-            "_Usuario__perfil": "Administrador",
+            "_Usuario__perfil": "Vendedor",
             "_Usuario__nombre": "Pablo",
             "_Usuario__apellido": "Garcia",
             "_Usuario__nombreUsuario": "pablo15",

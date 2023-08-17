@@ -132,6 +132,7 @@ class User_Interface(Frame):
 
         #Colocando usuarios dentro de la tabla
         self.listadoDict = self.metodosUsuarios.dataJson['users']
+        
         for x in self.listadoDict:
             self.tree.insert('', 'end', values=[x['_Usuario__id'], x['_Usuario__nombreUsuario'], x['_Usuario__nombre'], x['_Usuario__apellido'], x['_Usuario__perfil'], x['_Usuario__clave'], x['_Usuario__confirmacion']])
 
@@ -156,6 +157,34 @@ class User_Interface(Frame):
         self.temp_lastNames.set(self.lastNames_entry.get())
         self.temp_pass.set(self.clave_entry.get())
         self.temp_confirPass.set(self.confir_entry.get())
+
+    def EliminarEntrys(self):
+        self.id_userEntry.delete(0, END)
+        self.userNameEntry.delete(0, END)
+        self.names_entry.delete(0, END)
+        self.lastNames_entry.delete(0, END)
+        self.profileCombo.delete(0, END)
+        self.clave_entry.delete(0, END)
+        self.confir_entry.delete(0, END)
+
+    def DesactivarEntrys(self):
+        self.id_userEntry['state'] = DISABLED
+        self.userNameEntry['state'] = DISABLED
+        self.names_entry['state'] = DISABLED
+        self.lastNames_entry['state'] = DISABLED
+        self.profileCombo['state'] = DISABLED
+        self.clave_entry['state'] = DISABLED
+        self.confir_entry['state'] = DISABLED
+
+    def ActivarEntrys(self):
+        self.id_userEntry['state'] = NORMAL
+        self.userNameEntry['state'] = NORMAL
+        self.names_entry['state'] = NORMAL
+        self.lastNames_entry['state'] = NORMAL
+        self.profileCombo['state'] = NORMAL
+        self.clave_entry['state'] = NORMAL
+        self.confir_entry['state'] = NORMAL
+
 
     def editarRegistro(self):
         self.AsigEntry()
@@ -186,21 +215,9 @@ class User_Interface(Frame):
 
             self.id_userEntry['state'] = NORMAL
 
-            self.id_userEntry.delete(0, END)
-            self.userNameEntry.delete(0, END)
-            self.names_entry.delete(0, END)
-            self.lastNames_entry.delete(0, END)
-            self.profileCombo.delete(0, END)
-            self.clave_entry.delete(0, END)
-            self.confir_entry.delete(0, END)
+            self.EliminarEntrys()
 
-            self.id_userEntry['state'] = DISABLED
-            self.userNameEntry['state'] = DISABLED
-            self.names_entry['state'] = DISABLED
-            self.lastNames_entry['state'] = DISABLED
-            self.profileCombo['state'] = DISABLED
-            self.clave_entry['state'] = DISABLED
-            self.confir_entry['state'] = DISABLED
+            self.DesactivarEntrys()
 
             self.edit_btn['state'] = NORMAL
             self.save_btn['state'] = DISABLED
@@ -209,10 +226,10 @@ class User_Interface(Frame):
         else:
 
             usernameExists = False
+
             for x in self.listadoDict:
                 if (x['_Usuario__nombreUsuario'] == self.temp_userName.get()) and (x['_Usuario__nombreUsuario'] != registroActualStr[1]):
                     usernameExists = True
-
 
             if (self.userNameEntry.get() == '' or self.names_entry.get() == '' or self.profileCombo.get() == '' or self.lastNames_entry.get() == '' or self.clave_entry.get() == '' or self.confir_entry.get() == ''):
                 messagebox.showerror(message='Debe llenar todos los campos.', title='ERROR DE EDICION DE USUARIO')
@@ -234,71 +251,35 @@ class User_Interface(Frame):
 
                 self.id_userEntry['state'] = NORMAL
 
-                self.id_userEntry.delete(0, END)
-                self.userNameEntry.delete(0, END)
-                self.names_entry.delete(0, END)
-                self.lastNames_entry.delete(0, END)
-                self.profileCombo.delete(0, END)
-                self.clave_entry.delete(0, END)
-                self.confir_entry.delete(0, END)
+                self.EliminarEntrys()
 
-                self.id_userEntry['state'] = DISABLED
-                self.userNameEntry['state'] = DISABLED
-                self.names_entry['state'] = DISABLED
-                self.lastNames_entry['state'] = DISABLED
-                self.profileCombo['state'] = DISABLED
-                self.clave_entry['state'] = DISABLED
-                self.confir_entry['state'] = DISABLED
+                self.DesactivarEntrys()
 
                 self.edit_btn['state'] = NORMAL
                 self.save_btn['state'] = DISABLED
                 self.cancel_btn['state'] = DISABLED
 
-
     def cancelarEdicion(self):
 
         self.id_userEntry['state'] = NORMAL
 
-        self.id_userEntry.delete(0, END)
-        self.userNameEntry.delete(0, END)
-        self.names_entry.delete(0, END)
-        self.lastNames_entry.delete(0, END)
-        self.profileCombo.delete(0, END)
-        self.clave_entry.delete(0, END)
-        self.confir_entry.delete(0, END)
+        self.EliminarEntrys()
 
-        self.id_userEntry['state'] = DISABLED
-        self.userNameEntry['state'] = DISABLED
-        self.names_entry['state'] = DISABLED
-        self.lastNames_entry['state'] = DISABLED
-        self.profileCombo['state'] = DISABLED
-        self.clave_entry['state'] = DISABLED
-        self.confir_entry['state'] = DISABLED
+        self.DesactivarEntrys()
 
         self.save_btn['state'] = DISABLED
         self.cancel_btn['state'] = DISABLED
         self.edit_btn['state'] = NORMAL
+
 
     def colocar_informacion_en_campos(self):
 
         tuplaSeleccion = self.tree.selection()
         atribSelecActual = self.tree.item(tuplaSeleccion[0])['values']
 
-        self.id_userEntry['state'] = NORMAL
-        self.userNameEntry['state'] = NORMAL
-        self.names_entry['state'] = NORMAL
-        self.lastNames_entry['state'] = NORMAL
-        self.profileCombo['state'] = NORMAL
-        self.clave_entry['state'] = NORMAL
-        self.confir_entry['state'] = NORMAL
+        self.ActivarEntrys()
 
-        self.id_userEntry.delete(0, END)
-        self.userNameEntry.delete(0, END)
-        self.names_entry.delete(0, END)
-        self.lastNames_entry.delete(0, END)
-        self.profileCombo.delete(0, END)
-        self.clave_entry.delete(0, END)
-        self.confir_entry.delete(0, END)
+        self.EliminarEntrys()
 
         self.id_userEntry.insert(0, atribSelecActual[0])
         self.userNameEntry.insert(0, atribSelecActual[1])
@@ -308,13 +289,8 @@ class User_Interface(Frame):
         self.clave_entry.insert(0, atribSelecActual[5])
         self.confir_entry.insert(0, atribSelecActual[6])
 
-        self.id_userEntry['state'] = DISABLED
-        self.userNameEntry['state'] = DISABLED
-        self.names_entry['state'] = DISABLED
-        self.lastNames_entry['state'] = DISABLED
-        self.profileCombo['state'] = DISABLED
-        self.clave_entry['state'] = DISABLED
-        self.confir_entry['state'] = DISABLED
+        self.DesactivarEntrys()
+
 
     def ir_al_primer_registro(self):
         
@@ -362,6 +338,7 @@ class User_Interface(Frame):
 
         self.colocar_informacion_en_campos()
 
+
     def ventanaCrearUsuario(self):
         root = Tk()
         Create_user(root)
@@ -376,6 +353,6 @@ class User_Interface(Frame):
         for x in self.listadoDict:
             self.tree.insert('', 'end', values=[x['_Usuario__id'], x['_Usuario__nombreUsuario'], x['_Usuario__nombre'], x['_Usuario__apellido'], x['_Usuario__perfil'], x['_Usuario__clave'], x['_Usuario__confirmacion']])
         
-root = Tk()
+"""root = Tk()
 User_Interface(root)
-root.mainloop()
+root.mainloop()"""
