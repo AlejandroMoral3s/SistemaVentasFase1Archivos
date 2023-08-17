@@ -21,11 +21,11 @@
         {
             "_Usuario__id": 3,
             "_Usuario__perfil": "Vendedor",
-            "_Usuario__nombre": "Maria",
-            "_Usuario__apellido": "Quezada",
-            "_Usuario__nombreUsuario": "maria17",
-            "_Usuario__clave": "123",
-            "_Usuario__confirmacion": "123"
+            "_Usuario__nombre": "Isabel",
+            "_Usuario__apellido": "Mollinedo",
+            "_Usuario__nombreUsuario": "isa27",
+            "_Usuario__clave": "1234",
+            "_Usuario__confirmacion": "1234"
         }
     ],
     "clients": [
