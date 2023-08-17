@@ -93,10 +93,10 @@ class User_Interface(Frame):
         self.create_btn = Button(self.root, text='Crear', command=self.ventanaCrearUsuario)
         self.create_btn.grid(row=5, column=5, padx=(10, 3), pady=15)
 
-        self.edit_btn = Button(self.root, text='Editar')
+        self.edit_btn = Button(self.root, text='Editar', command=self.editarRegistro)
         self.edit_btn.grid(row=5, column=6, padx=3, pady=15)
 
-        self.save_btn = Button(self.root, text='Guardar')
+        self.save_btn = Button(self.root, text='Guardar', state=DISABLED, command=self.guardarCambios)
         self.save_btn.grid(row=5, column=7, padx=3, pady=15)
 
         self.delete_btn = Button(self.root, text='Borrar')
@@ -105,7 +105,7 @@ class User_Interface(Frame):
         self.search_btn = Button(self.root, text='Buscar')
         self.search_btn.grid(row=5, column=9, padx=3, pady=15)
 
-        self.cancel_btn = Button(self.root, text='Cancelar')
+        self.cancel_btn = Button(self.root, text='Cancelar', state=DISABLED, command=self.cancelarEdicion)
         self.cancel_btn.grid(row=5, column=10, padx=(3,20), pady=15)
 
         #INCLUYENDO TABLA
@@ -130,6 +130,7 @@ class User_Interface(Frame):
         self.tree.column('#6', width=150, anchor='center')
         self.tree.column('#7', width=150, anchor='center')
 
+
         #Colocando usuarios dentro de la tabla
         self.listadoDict = self.metodosUsuarios.dataJson['users']
         for x in self.listadoDict:
@@ -146,8 +147,84 @@ class User_Interface(Frame):
         self.tree.configure(yscrollcommand=self.verScrol.set)
         self.verScrol.grid(row=6, column=10, sticky='ns', padx=10)
         
-    
+
+
+    def AsigEntry(self):
+        self.temp_userId.set(self.id_userEntry.get())
+        self.temp_userName.set(self.userNameEntry.get())
+        self.temp_names.set(self.names_entry.get())
+        self.temp_profile.set(self.profileCombo.get())
+        self.temp_lastNames.set(self.lastNames_entry.get())
+        self.temp_pass.set(self.clave_entry.get())
+        self.temp_confirPass.set(self.confir_entry.get())
+
+    def editarRegistro(self):
+        self.AsigEntry()
+
+        self.id_userEntry['state'] = DISABLED
+        self.userNameEntry['state'] = NORMAL
+        self.names_entry['state'] = NORMAL
+        self.lastNames_entry['state'] = NORMAL
+        self.profileCombo['state'] = NORMAL
+        self.clave_entry['state'] = NORMAL
+        self.confir_entry['state'] = NORMAL
+
+        self.edit_btn['state'] = DISABLED
+        self.save_btn['state'] = NORMAL
+        self.cancel_btn['state'] = NORMAL
+        
+
+    def guardarCambios(self):
+        self.AsigEntry()
+        entrysActuales = [self.id_userEntry.get(), self.userNameEntry.get(), self.names_entry.get(), self.lastNames_entry.get(), self.profileCombo.get(), self.clave_entry.get(), self.confir_entry.get()]
+        registroActual = self.tree.item(self.tree.selection()[0])['values']
+        registroActualStr = []
+
+        for x in registroActual:
+            registroActualStr.append(str(x))
+
+        print(entrysActuales)
+        print(registroActualStr)
+
+        if entrysActuales == registroActualStr:
+            messagebox.showinfo('INFORMACION DE EDICION', 'REGISTRO EDITADO CON EXITO, POR FAVOR ACTUALIZAR LA TABLA')
+
+            self.id_userEntry['state'] = DISABLED
+            self.userNameEntry['state'] = DISABLED
+            self.names_entry['state'] = DISABLED
+            self.lastNames_entry['state'] = DISABLED
+            self.profileCombo['state'] = DISABLED
+            self.clave_entry['state'] = DISABLED
+            self.confir_entry['state'] = DISABLED
+
+            self.edit_btn['state'] = NORMAL
+            self.save_btn['state'] = DISABLED
+            self.cancel_btn['state'] = DISABLED
+
+        else:
+
+            usernameExists = False
+            for x in self.listadoDict:
+                if (x['_Usuario__nombreUsuario'] == self.temp_userName.get()) and (x['_Usuario__nombreUsuario'] != registroActualStr[1]):
+                    usernameExists = True
+
+
+            if (self.userNameEntry.get() == '' or self.names_entry.get() == '' or self.profileCombo.get() == '' or self.lastNames_entry.get() == '' or self.clave_entry.get() == '' or self.confir_entry.get() == ''):
+                messagebox.showerror(message='Debe llenar todos los campos.', title='ERROR DE EDICION DE USUARIO')
+            elif usernameExists:
+                messagebox.showerror(title='NOMBRE DE USUARIO INCORRECTO', message='El nombre de usuario ya existe.')
+            elif self.temp_pass.get() != self.temp_confirPass.get():
+                messagebox.showerror(title='ERROR EN CONTRASEÑA', message='La contraseña y su confimacion, no coinciden.')
+            else:
+                print('todo bien')
+
+    def cancelarEdicion(self):
+        self.save_btn['state'] = DISABLED
+        self.cancel_btn['state'] = DISABLED
+        self.edit_btn['state'] = NORMAL
+
     def colocar_informacion_en_campos(self):
+
         tuplaSeleccion = self.tree.selection()
         atribSelecActual = self.tree.item(tuplaSeleccion[0])['values']
         print(atribSelecActual)
@@ -159,6 +236,14 @@ class User_Interface(Frame):
         self.profileCombo['state'] = NORMAL
         self.clave_entry['state'] = NORMAL
         self.confir_entry['state'] = NORMAL
+
+        self.id_userEntry.delete(0, END)
+        self.userNameEntry.delete(0, END)
+        self.names_entry.delete(0, END)
+        self.lastNames_entry.delete(0, END)
+        self.profileCombo.delete(0, END)
+        self.clave_entry.delete(0, END)
+        self.confir_entry.delete(0, END)
 
         self.id_userEntry.insert(0, atribSelecActual[0])
         self.userNameEntry.insert(0, atribSelecActual[1])
@@ -236,3 +321,6 @@ class User_Interface(Frame):
         for x in self.listadoDict:
             self.tree.insert('', 'end', values=[x['_Usuario__id'], x['_Usuario__nombreUsuario'], x['_Usuario__nombre'], x['_Usuario__apellido'], x['_Usuario__perfil'], x['_Usuario__clave'], x['_Usuario__confirmacion']])
         
+root = Tk()
+User_Interface(root)
+root.mainloop()

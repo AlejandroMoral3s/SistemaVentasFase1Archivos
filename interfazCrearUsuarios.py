@@ -112,7 +112,7 @@ class Create_user(Frame):
                 messagebox.showerror(message='La contraseña y la confirmacion no coinciden.', title='ERROR DE CONTRASEÑA')
             else:
                 self.metodosUsuarios.crearUsuario(
-                    self.temp_userId.get(),
+                    int(self.temp_userId.get()),
                     self.temp_profile.get(),
                     self.temp_names.get(),
                     self.temp_lastNames.get(),
