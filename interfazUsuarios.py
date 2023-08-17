@@ -10,7 +10,6 @@ class User_Interface(Frame):
         metodosUsuarios = UsuariosList()
 
         self.colorFondo = '#440c29'
-        self.noId = 0
 
         self.root = root
         self.root.title('INTERFAZ DE USUARIOS')
@@ -37,7 +36,7 @@ class User_Interface(Frame):
         # ID USER
         self.id_userLabel = Label(self.root, text='Id Usuario: ', background=self.colorFondo, fg='white')
         self.id_userLabel.grid(row=2, column=0, columnspan=2, sticky='ew', padx=(5,0), pady=(15,15))
-        self.id_userEntry = Entry(self.root, textvariable=self.temp_userId, state=DISABLED)
+        self.id_userEntry = Entry(self.root, textvariable=self.temp_userId)
         self.id_userEntry.grid(row=2, column=2, columnspan=3, sticky='ew', padx=(0,15), pady=(15,15))
 
         # NAMES
@@ -118,8 +117,8 @@ class User_Interface(Frame):
         self.tree.heading('profile', text='PERFIL')
 
         #Colocando usuarios dentro de la tabla
-        listadoDict = metodosUsuarios.dataJson['users']
-        for x in listadoDict:
+        self.listadoDict = metodosUsuarios.dataJson['users']
+        for x in self.listadoDict:
             self.tree.insert('', 'end', values=[x['_Usuario__id'], x['_Usuario__username'], x['_Usuario__nombre'], x['_Usuario__apellido'], x['_Usuario__perfil']])
 
         self.tree.grid(row=6, column=0, columnspan=10, padx=15, pady=15)
@@ -141,10 +140,22 @@ class User_Interface(Frame):
     #en proceso
     def createUser(self):
         self.AsigEntry()
-        
+
         if (self.userNameEntry.get() == '' or self.names_entry.get() == '' or self.profileCombo.get() == '' or self.lastNames_entry.get() == '' or self.clave_entry.get() == '' or self.confir_entry.get() == ''):
             messagebox.showerror(message='DEBE LLENAR CADA CAMPO SOLICITADO', title='ERROR DE CREACION DE USUARIO')
-        elif
+        else:
+            userExists = False
+            for x in self.listadoDict:
+                
+                if x['_Usuario__username'] == self.temp_userName.get():
+                    userExists = True
+            
+            if userExists:
+                messagebox.showerror(message='El nombre de usuario ya existe.', title='USUARIO NO VALIDO')
+            elif self.temp_pass.get() != self.temp_confirPass.get():
+                messagebox.showerror(message='La contraseña y la confirmacion no coinciden.', title='ERROR DE CONTRASEÑA')
+            else:
+
 
         
 
