@@ -1,19 +1,18 @@
 from tkinter import *
 from tkinter import ttk
-from usuariosList import UsuariosList
 from tkinter import messagebox
-from interfazCrearUsuarios import Create_user
+from usuariosList import UsuariosList
 
-class User_Interface(Frame):
+class Create_user(Frame):
+
     def __init__(self, root):
         super().__init__(root)
-        
-        self.metodosUsuarios = UsuariosList()
 
-        self.colorFondo = '#440c29'
+        self.metodosUsuarios = UsuariosList()
+        
 
         self.root = root
-        self.root.title('INTERFAZ DE USUARIOS')
+        self.colorFondo = '#440c29'
         self.root.configure(bg=self.colorFondo)
 
         #Creando variables temporales
@@ -72,79 +71,53 @@ class User_Interface(Frame):
         self.confir_entry = Entry(self.root, textvariable=self.temp_confirPass)
         self.confir_entry.grid(row=4, column=7, columnspan=3, sticky='ew', padx=(0,15), pady=(15,15))
 
+        self.listadoDict = self.metodosUsuarios.dataJson['users']
+
         #BOTONES DE DESPLAZAMIENTO
-        self.first_btn = Button(self.root, text='Primero')
-        self.first_btn.grid(row=5, column=0, padx=(25,5), pady=5)
+        self.first_btn = Button(self.root, text='CREAR USUARIO', command=self.createUser)
+        self.first_btn.grid(row=5, column=0, columnspan=5, padx=(25,5), pady=5)
 
-        self.previous_btn = Button(self.root, text='Anterior')
-        self.previous_btn.grid(row=5, column=1, padx=5, pady=5)
+        self.previous_btn = Button(self.root, text='CANCELAR', command=self.root.destroy)
+        self.previous_btn.grid(row=5, column=5,columnspan=5, padx=5, pady=5)
 
-        self.next_btn = Button(self.root, text='Siguiente')
-        self.next_btn.grid(row=5, column=2, padx=5, pady=5)
+    def AsigEntry(self):
+        self.temp_userId.set(self.id_userEntry.get())
+        self.temp_userName.set(self.userNameEntry.get())
+        self.temp_names.set(self.names_entry.get())
+        self.temp_profile.set(self.profileCombo.get())
+        self.temp_lastNames.set(self.lastNames_entry.get())
+        self.temp_pass.set(self.clave_entry.get())
+        self.temp_confirPass.set(self.confir_entry.get())
 
-        self.last_btn = Button(self.root, text='Ultimo')
-        self.last_btn.grid(row=5, column=3, padx=5, pady=5)
+    def createUser(self):
+        self.AsigEntry()
 
-        self.last_btn = Button(self.root, text='Actualizar', command=self.actualizarTabla)
-        self.last_btn.grid(row=5, column=4, padx=(5, 15), pady=5)
+        if (self.userNameEntry.get() == '' or self.names_entry.get() == '' or self.profileCombo.get() == '' or self.lastNames_entry.get() == '' or self.clave_entry.get() == '' or self.confir_entry.get() == ''):
+            messagebox.showerror(message='DEBE LLENAR CADA CAMPO SOLICITADO', title='ERROR DE CREACION DE USUARIO')
+        else:
+            userExists = False
+            idExists = False
+            for x in self.listadoDict:
+                if x['_Usuario__nombreUsuario'] == self.temp_userName.get():
+                    userExists = True
 
-        #BOTONES DE MANIPULACION DE DATOS
-
-        self.create_btn = Button(self.root, text='Crear', command=self.ventanaCrearUsuario)
-        self.create_btn.grid(row=5, column=5, padx=(35, 5), pady=15)
-
-        self.edit_btn = Button(self.root, text='Editar')
-        self.edit_btn.grid(row=5, column=6, padx=5, pady=15)
-
-        self.save_btn = Button(self.root, text='Guardar')
-        self.save_btn.grid(row=5, column=7, padx=5, pady=15)
-
-        self.delete_btn = Button(self.root, text='Borrar')
-        self.delete_btn.grid(row=5, column=8, padx=5, pady=15)
-
-        self.search_btn = Button(self.root, text='Buscar')
-        self.search_btn.grid(row=5, column=9, padx=5, pady=15)
-
-        self.cancel_btn = Button(self.root, text='Cancelar')
-        self.cancel_btn.grid(row=5, column=10, padx=(5,50), pady=15)
-
-        #INCLUYENDO TABLA
-
-        self.columns = ('user_id','username', 'names', 'last_names', 'profile')
-
-        self.tree = ttk.Treeview(self.root, columns=self.columns, show='headings')
-
-        self.tree.heading('user_id', text='ID')
-        self.tree.heading('username', text='USUARIO')
-        self.tree.heading('names', text='NOMBRES')
-        self.tree.heading('last_names', text='APELLIDOS')
-        self.tree.heading('profile', text='PERFIL')
-
-        #Colocando usuarios dentro de la tabla
-        self.listadoDict = self.metodosUsuarios.dataJson['users']
-        for x in self.listadoDict:
-            self.tree.insert('', 'end', values=[x['_Usuario__id'], x['_Usuario__nombreUsuario'], x['_Usuario__nombre'], x['_Usuario__apellido'], x['_Usuario__perfil']])
-
-        self.tree.grid(row=6, column=0, columnspan=10, padx=15, pady=15)
-
-        #Creando un scrollbar vertical para desplazarse en la tabla
-        self.verScrol = ttk.Scrollbar(self.root, orient='vertical', command=self.tree.yview)
-        self.tree.configure(yscrollcommand=self.verScrol.set)
-        self.verScrol.grid(row=6, column=10, sticky='ns', padx=10)
-        
-    
-    def ventanaCrearUsuario(self):
-        root = Tk()
-        Create_user(root)
-        root.mainloop()
-
-    def actualizarTabla(self):
-        self.metodosUsuarios = UsuariosList()
-        self.listadoDict = self.metodosUsuarios.dataJson['users']
-
-        for i in self.tree.get_children():
-            self.tree.delete(i)
-        for x in self.listadoDict:
-            self.tree.insert('', 'end', values=[x['_Usuario__id'], x['_Usuario__nombreUsuario'], x['_Usuario__nombre'], x['_Usuario__apellido'], x['_Usuario__perfil']])
-         
-
+                if x['_Usuario__id'] == self.temp_userId.get():
+                    idExists = True
+            
+            if userExists:
+                messagebox.showerror(message='El NOMBRE de usuario ya existe.', title='USUARIO NO VALIDO')
+            elif idExists:
+                messagebox.showerror(message='El ID de usuario ya existe.', title='ID NO VALIDO')
+            elif self.temp_pass.get() != self.temp_confirPass.get():
+                messagebox.showerror(message='La contraseña y la confirmacion no coinciden.', title='ERROR DE CONTRASEÑA')
+            else:
+                self.metodosUsuarios.crearUsuario(
+                    self.temp_userId.get(),
+                    self.temp_profile.get(),
+                    self.temp_names.get(),
+                    self.temp_lastNames.get(),
+                    self.temp_userName.get(),
+                    self.temp_pass.get(),
+                    self.temp_confirPass.get())
+                messagebox.showinfo(message='USUARIO CREADO CON EXITO!', title='INFORMACION')
+                self.root.destroy()

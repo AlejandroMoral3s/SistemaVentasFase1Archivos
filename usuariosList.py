@@ -23,7 +23,7 @@ class UsuariosList:
     
     def buscarUser(self, username):    
         for usuario in self.dataJson['users']:
-            if(usuario['_Usuario__username']==username):
+            if(usuario['_Usuario__nombreUsuario']==username):
                 return usuario
         return None
     
@@ -47,7 +47,7 @@ class UsuariosList:
             usTemp['_Usuario__perfil'] = perfil
             usTemp['_Usuario__nombre'] = nombre
             usTemp['_Usuario__apellido'] = apellido            
-            usTemp['_Usuario__username'] = username
+            usTemp['_Usuario__nombreUsuario'] = username
             usTemp['_Usuario__clave'] = clave
             usTemp['_Usuario__confirmacion'] = confirmacion
             self.guardar()

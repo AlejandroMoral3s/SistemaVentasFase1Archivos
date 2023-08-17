@@ -5,7 +5,43 @@
             "_Usuario__perfil": "admin",
             "_Usuario__nombre": "alejandro",
             "_Usuario__apellido": "Morales",
-            "_Usuario__username": "ale26",
+            "_Usuario__nombreUsuario": "ale26",
+            "_Usuario__clave": "123",
+            "_Usuario__confirmacion": "123"
+        },
+        {
+            "_Usuario__id": "2",
+            "_Usuario__perfil": "Administrador",
+            "_Usuario__nombre": "Paulina",
+            "_Usuario__apellido": "Velasquez",
+            "_Usuario__nombreUsuario": "pau12",
+            "_Usuario__clave": "543",
+            "_Usuario__confirmacion": "543"
+        },
+        {
+            "_Usuario__id": "3",
+            "_Usuario__perfil": "Vendedor",
+            "_Usuario__nombre": "Julio",
+            "_Usuario__apellido": "Jaramillo",
+            "_Usuario__nombreUsuario": "jul13",
+            "_Usuario__clave": "123",
+            "_Usuario__confirmacion": "123"
+        },
+        {
+            "_Usuario__id": "4",
+            "_Usuario__perfil": "Administrador",
+            "_Usuario__nombre": "Diego",
+            "_Usuario__apellido": "Morales",
+            "_Usuario__nombreUsuario": "die",
+            "_Usuario__clave": "159",
+            "_Usuario__confirmacion": "159"
+        },
+        {
+            "_Usuario__id": "5",
+            "_Usuario__perfil": "Administrador",
+            "_Usuario__nombre": "Pablo",
+            "_Usuario__apellido": "Quezada",
+            "_Usuario__nombreUsuario": "pablo12",
             "_Usuario__clave": "123",
             "_Usuario__confirmacion": "123"
         }
@@ -13,9 +49,10 @@
     "clients": [
         {
             "_Cliente__id": 12,
-            "_Cliente__dpi": "8965",
-            "_Cliente__nombre": "Juan",
-            "_Cliente__apellido": "Lopez",
+            "_Cliente__tipoDocumento": "DPI",
+            "_Cliente__numDocumento": "54654658965",
+            "_Cliente__nombre": "Pepe",
+            "_Cliente__apellido": "Garcia",
             "_Cliente__direccion": "zona 2",
             "_Cliente__telefono": "4587966",
             "_Cliente__ciudad": "xela",
