@@ -2,8 +2,8 @@
     "users": [
         {
             "_Usuario__id": 1,
-            "_Usuario__perfil": "admin",
-            "_Usuario__nombre": "alejandro",
+            "_Usuario__perfil": "Administrador",
+            "_Usuario__nombre": "Alejandro",
             "_Usuario__apellido": "Morales",
             "_Usuario__nombreUsuario": "ale26",
             "_Usuario__clave": "123",

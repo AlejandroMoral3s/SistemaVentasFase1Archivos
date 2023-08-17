@@ -31,86 +31,86 @@ class User_Interface(Frame):
 
         self.userNameLabel = Label(self.root, text='Usuario: ', background=self.colorFondo, fg='white')
         self.userNameLabel.grid(row=1, column=0, columnspan=2, sticky='ew', padx=(5,0), pady=(15,15))
-        self.userNameEntry = Entry(self.root, textvariable=self.temp_userName)
+        self.userNameEntry = Entry(self.root, textvariable=self.temp_userName, state=DISABLED)
         self.userNameEntry.grid(row=1, column=2, columnspan=3, sticky='ew', padx=(0,15), pady=(15,15))
 
         # ID USER
         self.id_userLabel = Label(self.root, text='Id Usuario: ', background=self.colorFondo, fg='white')
         self.id_userLabel.grid(row=2, column=0, columnspan=2, sticky='ew', padx=(5,0), pady=(15,15))
-        self.id_userEntry = Entry(self.root, textvariable=self.temp_userId)
+        self.id_userEntry = Entry(self.root, textvariable=self.temp_userId, state=DISABLED)
         self.id_userEntry.grid(row=2, column=2, columnspan=3, sticky='ew', padx=(0,15), pady=(15,15))
 
         # NAMES
         self.names_label = Label(self.root, text='Nombres: ', background=self.colorFondo, fg='white')
         self.names_label.grid(row=2, column=5, columnspan=2, sticky='ew', padx=(15,0), pady=(15,15))
-        self.names_entry = Entry(self.root, textvariable=self.temp_names)
+        self.names_entry = Entry(self.root, textvariable=self.temp_names, state=DISABLED)
         self.names_entry.grid(row=2, column=7, columnspan=3, sticky='ew', padx=(0,15), pady=(15,15))
 
 
         # PROFILE
         self.profileLabel = Label(self.root, text='Perfil: ', background=self.colorFondo, fg='white')
         self.profileLabel.grid(row=3, column=0, columnspan=2, sticky='ew', padx=(15,0), pady=(15,15))
-        self.profileCombo = ttk.Combobox(self.root, state='readonly', values=['Administrador', 'Vendedor'], textvariable=self.temp_profile)
+        self.profileCombo = ttk.Combobox(self.root, state='disabled', values=['Administrador', 'Vendedor'], textvariable=self.temp_profile)
         self.profileCombo.grid(row=3, column=2, columnspan=3, sticky='ew', padx=(0,15), pady=(15,15))
 
         # LAST NAMES
         self.lastNames_label = Label(self.root, text='Apellidos: ', background=self.colorFondo, fg='white')
         self.lastNames_label.grid(row=3, column=5, columnspan=2, sticky='ew', padx=(15,0), pady=(15,15))
-        self.lastNames_entry = Entry(self.root, textvariable=self.temp_lastNames)
+        self.lastNames_entry = Entry(self.root, textvariable=self.temp_lastNames, state=DISABLED)
         self.lastNames_entry.grid(row=3, column=7, columnspan=3, sticky='ew', padx=(0,15), pady=(15,15))
 
 
         # CLAVE
         self.clave_label = Label(self.root, text='Clave: ', background=self.colorFondo, fg='white')
         self.clave_label.grid(row=4, column=0, columnspan=2, sticky='ew', padx=(15,0), pady=(15,15))
-        self.clave_entry = Entry(self.root, textvariable=self.temp_pass)
+        self.clave_entry = Entry(self.root, textvariable=self.temp_pass, state=DISABLED)
         self.clave_entry.grid(row=4, column=2, columnspan=3, sticky='ew', padx=(0,15), pady=(15,15))
 
         # CLAVE CONFIRMACION
         self.confir_label = Label(self.root, text='Confirmacion: ', background=self.colorFondo, fg='white')
         self.confir_label.grid(row=4, column=5, columnspan=2, sticky='ew', padx=(15,0), pady=(15,15))
-        self.confir_entry = Entry(self.root, textvariable=self.temp_confirPass)
+        self.confir_entry = Entry(self.root, textvariable=self.temp_confirPass, state=DISABLED)
         self.confir_entry.grid(row=4, column=7, columnspan=3, sticky='ew', padx=(0,15), pady=(15,15))
 
         #BOTONES DE DESPLAZAMIENTO
-        self.first_btn = Button(self.root, text='Primero')
-        self.first_btn.grid(row=5, column=0, padx=(25,5), pady=5)
+        self.first_btn = Button(self.root, text='Primero', command=self.ir_al_primer_registro)
+        self.first_btn.grid(row=5, column=0, padx=(10,3), pady=5)
 
-        self.previous_btn = Button(self.root, text='Anterior')
-        self.previous_btn.grid(row=5, column=1, padx=5, pady=5)
+        self.previous_btn = Button(self.root, text='Anterior', command=self.ir_al_registro_anterior)
+        self.previous_btn.grid(row=5, column=1, padx=3, pady=5)
 
-        self.next_btn = Button(self.root, text='Siguiente')
-        self.next_btn.grid(row=5, column=2, padx=5, pady=5)
+        self.next_btn = Button(self.root, text='Siguiente', command=self.ir_al_siguiente_registro)
+        self.next_btn.grid(row=5, column=2, padx=3, pady=5)
 
-        self.last_btn = Button(self.root, text='Ultimo')
-        self.last_btn.grid(row=5, column=3, padx=5, pady=5)
+        self.last_btn = Button(self.root, text='Ultimo', command = self.ir_al_ultimo_registro)
+        self.last_btn.grid(row=5, column=3, padx=3, pady=5)
 
         self.last_btn = Button(self.root, text='Actualizar', command=self.actualizarTabla)
-        self.last_btn.grid(row=5, column=4, padx=(5, 15), pady=5)
+        self.last_btn.grid(row=5, column=4, padx=(3, 10), pady=5)
 
         #BOTONES DE MANIPULACION DE DATOS
 
         self.create_btn = Button(self.root, text='Crear', command=self.ventanaCrearUsuario)
-        self.create_btn.grid(row=5, column=5, padx=(35, 5), pady=15)
+        self.create_btn.grid(row=5, column=5, padx=(10, 3), pady=15)
 
         self.edit_btn = Button(self.root, text='Editar')
-        self.edit_btn.grid(row=5, column=6, padx=5, pady=15)
+        self.edit_btn.grid(row=5, column=6, padx=3, pady=15)
 
         self.save_btn = Button(self.root, text='Guardar')
-        self.save_btn.grid(row=5, column=7, padx=5, pady=15)
+        self.save_btn.grid(row=5, column=7, padx=3, pady=15)
 
         self.delete_btn = Button(self.root, text='Borrar')
-        self.delete_btn.grid(row=5, column=8, padx=5, pady=15)
+        self.delete_btn.grid(row=5, column=8, padx=3, pady=15)
 
         self.search_btn = Button(self.root, text='Buscar')
-        self.search_btn.grid(row=5, column=9, padx=5, pady=15)
+        self.search_btn.grid(row=5, column=9, padx=3, pady=15)
 
         self.cancel_btn = Button(self.root, text='Cancelar')
-        self.cancel_btn.grid(row=5, column=10, padx=(5,50), pady=15)
+        self.cancel_btn.grid(row=5, column=10, padx=(3,20), pady=15)
 
         #INCLUYENDO TABLA
 
-        self.columns = ('user_id','username', 'names', 'last_names', 'profile')
+        self.columns = ('user_id','username', 'names', 'last_names', 'profile', 'pass', 'confirmPass')
 
         self.tree = ttk.Treeview(self.root, columns=self.columns, show='headings')
 
@@ -119,11 +119,25 @@ class User_Interface(Frame):
         self.tree.heading('names', text='NOMBRES')
         self.tree.heading('last_names', text='APELLIDOS')
         self.tree.heading('profile', text='PERFIL')
+        self.tree.heading('pass', text='CONTRASEÑA')
+        self.tree.heading('confirmPass', text='CONFIRMACION')
+
+        self.tree.column('#1', width=70, anchor='center')
+        self.tree.column('#2', width=150, anchor='center')
+        self.tree.column('#3', width=150, anchor='center')
+        self.tree.column('#4', width=150, anchor='center')
+        self.tree.column('#5', width=150, anchor='center')
+        self.tree.column('#6', width=150, anchor='center')
+        self.tree.column('#7', width=150, anchor='center')
 
         #Colocando usuarios dentro de la tabla
         self.listadoDict = self.metodosUsuarios.dataJson['users']
         for x in self.listadoDict:
-            self.tree.insert('', 'end', values=[x['_Usuario__id'], x['_Usuario__nombreUsuario'], x['_Usuario__nombre'], x['_Usuario__apellido'], x['_Usuario__perfil']])
+            self.tree.insert('', 'end', values=[x['_Usuario__id'], x['_Usuario__nombreUsuario'], x['_Usuario__nombre'], x['_Usuario__apellido'], x['_Usuario__perfil'], x['_Usuario__clave'], x['_Usuario__confirmacion']])
+
+        self.contadorRegistros = 0
+        self.tree.selection_set(self.tree.get_children()[self.contadorRegistros])
+        self.tree.focus(self.tree.focus(self.tree.get_children()[self.contadorRegistros]))
 
         self.tree.grid(row=6, column=0, columnspan=10, padx=15, pady=15)
 
@@ -133,6 +147,81 @@ class User_Interface(Frame):
         self.verScrol.grid(row=6, column=10, sticky='ns', padx=10)
         
     
+    def colocar_informacion_en_campos(self):
+        tuplaSeleccion = self.tree.selection()
+        atribSelecActual = self.tree.item(tuplaSeleccion[0])['values']
+        print(atribSelecActual)
+
+        self.id_userEntry['state'] = NORMAL
+        self.userNameEntry['state'] = NORMAL
+        self.names_entry['state'] = NORMAL
+        self.lastNames_entry['state'] = NORMAL
+        self.profileCombo['state'] = NORMAL
+        self.clave_entry['state'] = NORMAL
+        self.confir_entry['state'] = NORMAL
+
+        self.id_userEntry.insert(0, atribSelecActual[0])
+        self.userNameEntry.insert(0, atribSelecActual[1])
+        self.names_entry.insert(0, atribSelecActual[2])
+        self.lastNames_entry.insert(0, atribSelecActual[3])
+        self.profileCombo.insert(0, atribSelecActual[4])
+        self.clave_entry.insert(0, atribSelecActual[5])
+        self.confir_entry.insert(0, atribSelecActual[6])
+
+        self.id_userEntry['state'] = DISABLED
+        self.userNameEntry['state'] = DISABLED
+        self.names_entry['state'] = DISABLED
+        self.lastNames_entry['state'] = DISABLED
+        self.profileCombo['state'] = DISABLED
+        self.clave_entry['state'] = DISABLED
+        self.confir_entry['state'] = DISABLED
+
+    def ir_al_primer_registro(self):
+        
+        ids = self.tree.get_children()
+        self.contadorRegistros = 0
+        self.tree.selection_set(ids[0])
+        self.tree.focus(ids[0])
+        self.colocar_informacion_en_campos()
+
+    def ir_al_siguiente_registro(self):
+        
+        ids = self.tree.get_children()
+
+        if ids[self.contadorRegistros] != ids[-1]:
+            self.contadorRegistros+=1
+            self.tree.selection_set(ids[self.contadorRegistros])
+            self.tree.focus(ids[self.contadorRegistros])
+        else:
+            self.contadorRegistros = 0
+            self.tree.selection_set(ids[self.contadorRegistros])
+            self.tree.focus(ids[self.contadorRegistros])
+
+        self.colocar_informacion_en_campos()
+
+    def ir_al_registro_anterior(self):
+
+        ids = self.tree.get_children()
+
+        if ids[self.contadorRegistros] != ids[0]:
+            self.contadorRegistros-=1
+            self.tree.selection_set(ids[self.contadorRegistros])
+            self.tree.focus(ids[self.contadorRegistros])
+        else:
+            self.contadorRegistros = self.tree.index(ids[-1])
+            self.tree.selection_set(ids[self.contadorRegistros])
+            self.tree.focus(ids[self.contadorRegistros])
+
+        self.colocar_informacion_en_campos()
+
+    def ir_al_ultimo_registro(self):
+        ids = self.tree.get_children()
+        self.contadorRegistros = self.tree.index(ids[-1])
+        self.tree.selection_set(ids[-1])
+        self.tree.focus(ids[-1])
+
+        self.colocar_informacion_en_campos()
+
     def ventanaCrearUsuario(self):
         root = Tk()
         Create_user(root)
@@ -145,6 +234,8 @@ class User_Interface(Frame):
         for i in self.tree.get_children():
             self.tree.delete(i)
         for x in self.listadoDict:
-            self.tree.insert('', 'end', values=[x['_Usuario__id'], x['_Usuario__nombreUsuario'], x['_Usuario__nombre'], x['_Usuario__apellido'], x['_Usuario__perfil']])
+            self.tree.insert('', 'end', values=[x['_Usuario__id'], x['_Usuario__nombreUsuario'], x['_Usuario__nombre'], x['_Usuario__apellido'], x['_Usuario__perfil'], x['_Usuario__clave'], x['_Usuario__confirmacion']])
          
-
+root = Tk()
+User_Interface(root)
+root.mainloop()
