@@ -1,0 +1,42 @@
+{
+    "users": [
+        {
+            "_Usuario__id": 1,
+            "_Usuario__perfil": "admin",
+            "_Usuario__nombre": "alejandro",
+            "_Usuario__apellido": "Morales",
+            "_Usuario__username": "ale26",
+            "_Usuario__clave": "123",
+            "_Usuario__confirmacion": "123"
+        }
+    ],
+    "clients": [
+        {
+            "_Cliente__id": 12,
+            "_Cliente__dpi": "8965",
+            "_Cliente__nombre": "Juan",
+            "_Cliente__apellido": "Lopez",
+            "_Cliente__direccion": "zona 2",
+            "_Cliente__telefono": "4587966",
+            "_Cliente__ciudad": "xela",
+            "_Cliente__fechaNac": "24/04/2003",
+            "_Cliente__fechaIng": "12/08/2023"
+        }
+    ],
+    "products": [
+        {
+            "_Producto__id": 1,
+            "_Producto__descripcion": "tomate",
+            "_Producto__precio": 4.5,
+            "_Producto__iva": 0.54,
+            "_Producto__nota": "vegetal"
+        },
+        {
+            "_Producto__id": 2,
+            "_Producto__descripcion": "cebolla",
+            "_Producto__precio": 4.5,
+            "_Producto__iva": 0.54,
+            "_Producto__nota": "vegetal"
+        }
+    ]
+}

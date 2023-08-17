@@ -61,7 +61,7 @@ class Login_window(Frame):
         self.button_cancel.grid(row=2, column=1, padx=5, pady=5)
 
     def obtain_data_json(self):
-        with open('usuarios.json', 'r') as f:
+        with open('info.json', 'r') as f:
             data = f.read()
             dataJson = json.loads(data)
             self.dataJson = dataJson
@@ -69,7 +69,7 @@ class Login_window(Frame):
     def obtain_values(self, *args):
         userExists = False
         for user in self.dataJson["users"]:
-            if (user["username"] == self.username.get()) and (user["password"] == self.password.get()):
+            if (user["_Usuario__username"] == self.username.get()) and (user["_Usuario__clave"] == self.password.get()):
                 userExists = True
 
         if userExists:
