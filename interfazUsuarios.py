@@ -46,7 +46,6 @@ class User_Interface(Frame):
         self.names_entry = Entry(self.root, textvariable=self.temp_names, state=DISABLED)
         self.names_entry.grid(row=2, column=7, columnspan=3, sticky='ew', padx=(0,15), pady=(15,15))
 
-
         # PROFILE
         self.profileLabel = Label(self.root, text='Perfil: ', background=self.colorFondo, fg='white')
         self.profileLabel.grid(row=3, column=0, columnspan=2, sticky='ew', padx=(15,0), pady=(15,15))
@@ -173,7 +172,6 @@ class User_Interface(Frame):
         self.save_btn['state'] = NORMAL
         self.cancel_btn['state'] = NORMAL
         
-
     def guardarCambios(self):
         self.AsigEntry()
         entrysActuales = [self.id_userEntry.get(), self.userNameEntry.get(), self.names_entry.get(), self.lastNames_entry.get(), self.profileCombo.get(), self.clave_entry.get(), self.confir_entry.get()]
@@ -183,11 +181,18 @@ class User_Interface(Frame):
         for x in registroActual:
             registroActualStr.append(str(x))
 
-        print(entrysActuales)
-        print(registroActualStr)
-
         if entrysActuales == registroActualStr:
             messagebox.showinfo('INFORMACION DE EDICION', 'REGISTRO EDITADO CON EXITO, POR FAVOR ACTUALIZAR LA TABLA')
+
+            self.id_userEntry['state'] = NORMAL
+
+            self.id_userEntry.delete(0, END)
+            self.userNameEntry.delete(0, END)
+            self.names_entry.delete(0, END)
+            self.lastNames_entry.delete(0, END)
+            self.profileCombo.delete(0, END)
+            self.clave_entry.delete(0, END)
+            self.confir_entry.delete(0, END)
 
             self.id_userEntry['state'] = DISABLED
             self.userNameEntry['state'] = DISABLED
@@ -216,9 +221,60 @@ class User_Interface(Frame):
             elif self.temp_pass.get() != self.temp_confirPass.get():
                 messagebox.showerror(title='ERROR EN CONTRASEÑA', message='La contraseña y su confimacion, no coinciden.')
             else:
-                print('todo bien')
+                self.metodosUsuarios.editarUsuario(
+                    registroActualStr[1],
+                    self.temp_profile.get(),
+                    self.temp_names.get(),
+                    self.temp_lastNames.get(),
+                    self.temp_userName.get(),
+                    self.temp_pass.get(),
+                    self.temp_confirPass.get())
+                
+                messagebox.showinfo('INFORMACION DE EDICION', 'REGISTRO EDITADO CON EXITO, POR FAVOR ACTUALIZAR LA TABLA')
+
+                self.id_userEntry['state'] = NORMAL
+
+                self.id_userEntry.delete(0, END)
+                self.userNameEntry.delete(0, END)
+                self.names_entry.delete(0, END)
+                self.lastNames_entry.delete(0, END)
+                self.profileCombo.delete(0, END)
+                self.clave_entry.delete(0, END)
+                self.confir_entry.delete(0, END)
+
+                self.id_userEntry['state'] = DISABLED
+                self.userNameEntry['state'] = DISABLED
+                self.names_entry['state'] = DISABLED
+                self.lastNames_entry['state'] = DISABLED
+                self.profileCombo['state'] = DISABLED
+                self.clave_entry['state'] = DISABLED
+                self.confir_entry['state'] = DISABLED
+
+                self.edit_btn['state'] = NORMAL
+                self.save_btn['state'] = DISABLED
+                self.cancel_btn['state'] = DISABLED
+
 
     def cancelarEdicion(self):
+
+        self.id_userEntry['state'] = NORMAL
+
+        self.id_userEntry.delete(0, END)
+        self.userNameEntry.delete(0, END)
+        self.names_entry.delete(0, END)
+        self.lastNames_entry.delete(0, END)
+        self.profileCombo.delete(0, END)
+        self.clave_entry.delete(0, END)
+        self.confir_entry.delete(0, END)
+
+        self.id_userEntry['state'] = DISABLED
+        self.userNameEntry['state'] = DISABLED
+        self.names_entry['state'] = DISABLED
+        self.lastNames_entry['state'] = DISABLED
+        self.profileCombo['state'] = DISABLED
+        self.clave_entry['state'] = DISABLED
+        self.confir_entry['state'] = DISABLED
+
         self.save_btn['state'] = DISABLED
         self.cancel_btn['state'] = DISABLED
         self.edit_btn['state'] = NORMAL
@@ -227,7 +283,6 @@ class User_Interface(Frame):
 
         tuplaSeleccion = self.tree.selection()
         atribSelecActual = self.tree.item(tuplaSeleccion[0])['values']
-        print(atribSelecActual)
 
         self.id_userEntry['state'] = NORMAL
         self.userNameEntry['state'] = NORMAL

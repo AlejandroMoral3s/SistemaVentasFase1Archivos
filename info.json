@@ -12,11 +12,11 @@
         {
             "_Usuario__id": 2,
             "_Usuario__perfil": "Administrador",
-            "_Usuario__nombre": "Paulina",
-            "_Usuario__apellido": "Velasquez",
-            "_Usuario__nombreUsuario": "pau12",
-            "_Usuario__clave": "543",
-            "_Usuario__confirmacion": "543"
+            "_Usuario__nombre": "Pablo",
+            "_Usuario__apellido": "Garcia",
+            "_Usuario__nombreUsuario": "pablo15",
+            "_Usuario__clave": "1012",
+            "_Usuario__confirmacion": "1012"
         },
         {
             "_Usuario__id": 3,
