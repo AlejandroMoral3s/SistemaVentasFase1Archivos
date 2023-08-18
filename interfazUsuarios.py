@@ -25,6 +25,8 @@ class User_Interface(Frame):
         self.temp_pass = StringVar()
         self.temp_confirPass = StringVar()
 
+        self.temp_BuscarUser = StringVar()
+
         # TITLE
         self.title_Label = Label(self.root, text='FORMULARIO PARA CREACION DE USUARIOS ', background=self.colorFondo, fg='white')
         self.title_Label.grid(row=0, column=0, columnspan=10)
@@ -71,6 +73,15 @@ class User_Interface(Frame):
         self.confir_entry = Entry(self.root, textvariable=self.temp_confirPass, state=DISABLED)
         self.confir_entry.grid(row=4, column=7, columnspan=3, sticky='ew', padx=(0,15), pady=(15,15))
 
+        #OPCIONES BUSCAR
+
+        self.buscar_label = Label(self.root, text='Ingresar nombre de usuario: ', background=self.colorFondo, fg='white')
+        self.buscar_label.grid(row=6, column=0, columnspan=3, pady=20, sticky='e')
+        self.buscar_entry = Entry(self.root, textvariable=self.temp_BuscarUser)
+        self.buscar_entry.grid(row=6, column=4, columnspan=4, pady=20, sticky='w')
+        self.buscar_btn = Button(self.root, text='BUSCAR REGISTRO', command=self.buscarRegistro)
+        self.buscar_btn.grid(row=6, column=7, columnspan=3, pady=20, sticky='w')
+
         #BOTONES DE DESPLAZAMIENTO
         self.first_btn = Button(self.root, text='Primero', command=self.ir_al_primer_registro)
         self.first_btn.grid(row=5, column=0, padx=(10,3), pady=5)
@@ -98,14 +109,11 @@ class User_Interface(Frame):
         self.save_btn = Button(self.root, text='Guardar', state=DISABLED, command=self.guardarCambios)
         self.save_btn.grid(row=5, column=7, padx=3, pady=15)
 
-        self.delete_btn = Button(self.root, text='Borrar')
+        self.delete_btn = Button(self.root, text='Borrar', command=self.eliminarRegistro)
         self.delete_btn.grid(row=5, column=8, padx=3, pady=15)
 
-        self.search_btn = Button(self.root, text='Buscar')
-        self.search_btn.grid(row=5, column=9, padx=3, pady=15)
-
         self.cancel_btn = Button(self.root, text='Cancelar', state=DISABLED, command=self.cancelarEdicion)
-        self.cancel_btn.grid(row=5, column=10, padx=(3,20), pady=15)
+        self.cancel_btn.grid(row=5, column=9, padx=(3,20), pady=15)
 
         #INCLUYENDO TABLA
 
@@ -140,12 +148,12 @@ class User_Interface(Frame):
         self.tree.selection_set(self.tree.get_children()[self.contadorRegistros])
         self.tree.focus(self.tree.focus(self.tree.get_children()[self.contadorRegistros]))
 
-        self.tree.grid(row=6, column=0, columnspan=10, padx=15, pady=15)
+        self.tree.grid(row=7, column=0, columnspan=10, padx=15, pady=15)
 
         #Creando un scrollbar vertical para desplazarse en la tabla
         self.verScrol = ttk.Scrollbar(self.root, orient='vertical', command=self.tree.yview)
         self.tree.configure(yscrollcommand=self.verScrol.set)
-        self.verScrol.grid(row=6, column=10, sticky='ns', padx=10)
+        self.verScrol.grid(row=7, column=10, sticky='ns', padx=10)
         
 
 
@@ -157,6 +165,7 @@ class User_Interface(Frame):
         self.temp_lastNames.set(self.lastNames_entry.get())
         self.temp_pass.set(self.clave_entry.get())
         self.temp_confirPass.set(self.confir_entry.get())
+        self.temp_BuscarUser.set(self.buscar_entry.get())
 
     def EliminarEntrys(self):
         self.id_userEntry.delete(0, END)
@@ -184,6 +193,7 @@ class User_Interface(Frame):
         self.profileCombo['state'] = NORMAL
         self.clave_entry['state'] = NORMAL
         self.confir_entry['state'] = NORMAL
+
 
 
     def editarRegistro(self):
@@ -259,6 +269,45 @@ class User_Interface(Frame):
                 self.save_btn['state'] = DISABLED
                 self.cancel_btn['state'] = DISABLED
 
+    def eliminarRegistro(self):
+
+        self.AsigEntry()
+        self.ActivarEntrys()
+        self.metodosUsuarios.borrarUsuario(self.temp_userName.get())
+        self.EliminarEntrys()
+        self.DesactivarEntrys()
+        messagebox.showinfo('ELIMINACION DE USUARIOS', 'Usuario eliminado correctamente!')
+
+    def buscarRegistro(self):
+        self.AsigEntry()
+
+        userNameExist = False
+
+        for x in self.listadoDict:
+            if x['_Usuario__nombreUsuario'] == self.temp_BuscarUser.get():
+                userNameExist = True
+
+        if self.temp_BuscarUser.get() == '':
+            messagebox.showerror('ERROR DE BUSQUEDA', 'Debe llenar el campo de busqueda.')
+        elif not(userNameExist):
+            messagebox.showerror('RESULTADO DE BUSQUEDA', 'El usuario que busca, no existe.')
+        elif userNameExist:
+            messagebox.showinfo('RESULTADO DE BUSQUEDA', 'Usuario encontrado!')
+            ids = self.tree.get_children()
+            indexRegistroBuscado = -1
+
+            for registro in ids:
+                indexRegistroBuscado+=1
+                if self.tree.item(registro)['values'][1] == self.temp_BuscarUser.get():
+                    break
+            
+            self.tree.selection_set(ids[indexRegistroBuscado])
+            self.contadorRegistros = indexRegistroBuscado
+
+            self.colocar_informacion_en_campos()
+
+            self.buscar_entry.delete(0, END)
+
     def cancelarEdicion(self):
 
         self.id_userEntry['state'] = NORMAL
@@ -270,6 +319,7 @@ class User_Interface(Frame):
         self.save_btn['state'] = DISABLED
         self.cancel_btn['state'] = DISABLED
         self.edit_btn['state'] = NORMAL
+
 
 
     def colocar_informacion_en_campos(self):
@@ -290,7 +340,6 @@ class User_Interface(Frame):
         self.confir_entry.insert(0, atribSelecActual[6])
 
         self.DesactivarEntrys()
-
 
     def ir_al_primer_registro(self):
         
@@ -353,6 +402,6 @@ class User_Interface(Frame):
         for x in self.listadoDict:
             self.tree.insert('', 'end', values=[x['_Usuario__id'], x['_Usuario__nombreUsuario'], x['_Usuario__nombre'], x['_Usuario__apellido'], x['_Usuario__perfil'], x['_Usuario__clave'], x['_Usuario__confirmacion']])
         
-"""root = Tk()
+root = Tk()
 User_Interface(root)
-root.mainloop()"""
+root.mainloop()
