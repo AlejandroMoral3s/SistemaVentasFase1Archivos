@@ -10,20 +10,11 @@
             "_Usuario__confirmacion": "123"
         },
         {
-            "_Usuario__id": 3,
-            "_Usuario__perfil": "Vendedor",
-            "_Usuario__nombre": "Isabel",
-            "_Usuario__apellido": "Mollinedo",
-            "_Usuario__nombreUsuario": "isa27",
-            "_Usuario__clave": "1234",
-            "_Usuario__confirmacion": "1234"
-        },
-        {
             "_Usuario__id": 2,
             "_Usuario__perfil": "Vendedor",
             "_Usuario__nombre": "Pablo",
             "_Usuario__apellido": "Obregon",
-            "_Usuario__nombreUsuario": "pablo15",
+            "_Usuario__nombreUsuario": "pablo16",
             "_Usuario__clave": "145",
             "_Usuario__confirmacion": "145"
         }

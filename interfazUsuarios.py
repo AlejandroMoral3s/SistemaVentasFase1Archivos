@@ -401,7 +401,3 @@ class User_Interface(Frame):
             self.tree.delete(i)
         for x in self.listadoDict:
             self.tree.insert('', 'end', values=[x['_Usuario__id'], x['_Usuario__nombreUsuario'], x['_Usuario__nombre'], x['_Usuario__apellido'], x['_Usuario__perfil'], x['_Usuario__clave'], x['_Usuario__confirmacion']])
-        
-root = Tk()
-User_Interface(root)
-root.mainloop()
