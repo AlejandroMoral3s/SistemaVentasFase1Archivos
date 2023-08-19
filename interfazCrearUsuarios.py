@@ -101,7 +101,7 @@ class Create_user(Frame):
                 if x['_Usuario__nombreUsuario'] == self.temp_userName.get():
                     userExists = True
 
-                if x['_Usuario__id'] == self.temp_userId.get():
+                if x['_Usuario__id'] == int(self.temp_userId.get()):
                     idExists = True
             
             if userExists:

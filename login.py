@@ -3,6 +3,7 @@ from tkinter import messagebox
 import json
 from interfazUsuarios import *
 from interfazClientes import *
+from interfazProductos import *
 
 class Login_window(Frame):
 
@@ -100,7 +101,7 @@ class Main_menu(Frame):
         #Creando Menu Archivo
         self.file = Menu(self.menu, tearoff=0)
         self.file.add_command(label='Clientes', command=self.display_ci)
-        self.file.add_command(label='Productos')
+        self.file.add_command(label='Productos', command=self.display_pi)
         self.file.add_command(label='Usuarios', command=self.display_ui)
         self.file.add_separator()
         self.file.add_command(label='Cambio de Clave')
@@ -132,6 +133,11 @@ class Main_menu(Frame):
     def display_ci(self):
         root = Tk()
         Client_Interface(root)
+        root.mainloop()
+
+    def display_pi(self):
+        root = Tk()
+        Product_Interface(root)
         root.mainloop()
 
     def userChange(self):
