@@ -5,6 +5,7 @@ from interfazUsuarios import *
 from interfazClientes import *
 from interfazProductos import *
 
+
 class Login_window(Frame):
 
     def __init__(self, root):
@@ -72,14 +73,16 @@ class Login_window(Frame):
 
     def obtain_values(self, *args):
         userExists = False
+        userNameActual = None
         for user in self.dataJson["users"]:
             if (user["_Usuario__nombreUsuario"] == self.username.get()) and (user["_Usuario__clave"] == self.password.get()):
                 userExists = True
+                userNameActual = user["_Usuario__nombreUsuario"]
 
         if userExists:
             self.root.destroy()
             mn = Tk()
-            Main_menu(mn)
+            Main_menu(mn, userNameActual)
             mn.mainloop()
         else:
             messagebox.showerror(message='EL USUARIO O CONTRASEÑA SON ERRONEOS, POR FAVOR VERIFICAR.', title='ERROR DE INICIO DE SESION')
@@ -87,22 +90,37 @@ class Login_window(Frame):
 
 class Main_menu(Frame):
 
-    def __init__(self, root):
+    def __init__(self, root, username):
         super().__init__(root)
 
+        self.userNameActual = username
         self.root = root
         self.root.title(f'Sistema de Ventas')
         self.root.geometry('500x250')
+
+        self.userAdmin = False
 
         #Instanciando el menu archivo
         self.menu = Menu(self.root)
         self.root.config(menu = self.menu)
 
+        self.dataJson = {}
+        self.obtain_data_json()
+
+        for user in self.dataJson['users']:
+            if user['_Usuario__perfil'] == 'Administrador' and user['_Usuario__nombreUsuario'] == self.userNameActual:
+                self.userAdmin = True
+
         #Creando Menu Archivo
         self.file = Menu(self.menu, tearoff=0)
         self.file.add_command(label='Clientes', command=self.display_ci)
         self.file.add_command(label='Productos', command=self.display_pi)
-        self.file.add_command(label='Usuarios', command=self.display_ui)
+
+        if self.userAdmin:
+            self.file.add_command(label='Usuarios', command=self.display_ui)
+        else:
+            self.file.add_command(label='Usuarios', state=DISABLED)
+
         self.file.add_separator()
         self.file.add_command(label='Cambio de Clave')
         self.file.add_command(label='Cambio de Usuario', command= self.userChange)
@@ -112,7 +130,10 @@ class Main_menu(Frame):
         #Creando Menu Movimientos
         self.movements = Menu(self.menu, tearoff=0)
         self.movements.add_command(label='Nueva Factura')
-        self.movements.add_command(label='Reporte de Facturas')
+        if self.userAdmin:
+            self.movements.add_command(label='Reporte de Facturas')
+        else:
+            self.movements.add_command(label='Reporte de Facturas', state=DISABLED)
 
         #Creando Menu Ayuda
         self.help = Menu(self.menu, tearoff=0)
@@ -124,6 +145,14 @@ class Main_menu(Frame):
         self.menu.add_cascade(label='ARCHIVO', menu=self.file)
         self.menu.add_cascade(label='MOVIMIENTOS', menu=self.movements)
         self.menu.add_cascade(label='AYUDA', menu = self.help)
+        
+
+    def obtain_data_json(self):
+        
+        with open('info.json', 'r') as f:
+            data = f.read()
+            dataJson = json.loads(data)
+            self.dataJson = dataJson
         
     def display_ui(self):
         root = Tk()
@@ -148,6 +177,8 @@ class Main_menu(Frame):
 
     def out(self):
         self.root.destroy() 
+
+
 
 root = Tk()
 login = Login_window(root)
