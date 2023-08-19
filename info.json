@@ -59,6 +59,13 @@
             "_Producto__precio": 4.5,
             "_Producto__iva": 0.54,
             "_Producto__nota": "vegetal"
+        },
+        {
+            "_Producto__id": 3,
+            "_Producto__descripcion": "tamarindo",
+            "_Producto__precio": "2.1",
+            "_Producto__iva": "12%",
+            "_Producto__nota": "Fruta"
         }
     ]
 }
