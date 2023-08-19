@@ -27,15 +27,6 @@ class Create_Factura(Frame):
         for producto in self.diccProductos:
             self.listadoProductos.append(producto['_Producto__descripcion'])
 
-        """ for producto in self.diccProductos:
-            listaVolatil = []
-            listaVolatil.append(producto['_Producto__id'])
-            listaVolatil.append(producto['_Producto__descripcion'])
-            listaVolatil.append(producto['_Producto__precio'])
-            listaVolatil.append(producto['_Producto__iva'])
-            listaVolatil.append(producto['_Producto__nota'])
-            self.listadoProductos.append(listaVolatil)"""
-
         self.colorFondo = '#F54620'
 
         self.root = root
@@ -213,7 +204,7 @@ class Create_Factura(Frame):
             if x['_Factura__id'] == self.temp_idFactura.get():
                 idFacturaExist
 
-        if self.idfac_entry.get() == '' or self.fecha_entry.get() == '' or self.cliente_entry.get() == '' or self.producto_entry.get()=='' or self.cantidad_entry.get() == '':
+        if self.idfac_entry.get() == '' or self.fecha_entry.get() == '' or self.cliente_entry.get() == '':
             messagebox.showerror('ERROR AL INCLUIR PRODUCTO', 'Debe llenar todos los campos solicitados.')
         elif idFacturaExist:
             messagebox.showerror('ERROR EN CREACION DE FACTURA', 'El id de factura ya existe.')

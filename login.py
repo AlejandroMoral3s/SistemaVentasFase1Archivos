@@ -4,7 +4,7 @@ import json
 from interfazUsuarios import *
 from interfazClientes import *
 from interfazProductos import *
-
+from interfazFacturas import *
 
 class Login_window(Frame):
 
@@ -129,7 +129,7 @@ class Main_menu(Frame):
 
         #Creando Menu Movimientos
         self.movements = Menu(self.menu, tearoff=0)
-        self.movements.add_command(label='Nueva Factura')
+        self.movements.add_command(label='Nueva Factura', command=self.display_fi)
         if self.userAdmin:
             self.movements.add_command(label='Reporte de Facturas')
         else:
@@ -167,6 +167,11 @@ class Main_menu(Frame):
     def display_pi(self):
         root = Tk()
         Product_Interface(root)
+        root.mainloop()
+
+    def display_fi(self):
+        root = Tk()
+        Create_Factura(root)
         root.mainloop()
 
     def userChange(self):
