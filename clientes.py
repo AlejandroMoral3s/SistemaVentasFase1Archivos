@@ -1,8 +1,9 @@
 class Cliente:
 
-    def __init__(self, id, dpi, nombre, apellido, direccion, telefono, ciudad, fechaNac, fechaIng):
+    def __init__(self, id, tipoDocumento, noDocumento, nombre, apellido, direccion, telefono, ciudad, fechaNac, fechaIng):
         self.__id = id
-        self.__dpi = dpi
+        self.__tipoDocumento = tipoDocumento
+        self.__noDocumento = noDocumento
         self.__nombre = nombre
         self.__apellido = apellido
         self.__direccion = direccion
@@ -12,7 +13,7 @@ class Cliente:
         self.__fechaIng = fechaIng
 
     def __str__(self):
-        return f'ID [ {self.__id} ] DPI [ {self.__dpi} ] NOMBRE [ {self.__nombre} ] APELLIDO [ {self.__apellido} ] DIRECCION [ {self.__direccion} ] TELEFONO [ {self.__telefono} ] CIUDAD [ {self.__ciudad} ] FECHA_NAC [ {self.__fechaNac} ] FECHA_ING [ {self.__fechaIng} ]'
+        return f'ID [ {self.__id} ] TIPO_DOCUMENTO [ {self.__tipoDocumento} ] NO_DOCUMENTO [ {self.__noDocumento} ] NOMBRE [ {self.__nombre} ] APELLIDO [ {self.__apellido} ] DIRECCION [ {self.__direccion} ] TELEFONO [ {self.__telefono} ] CIUDAD [ {self.__ciudad} ] FECHA_NAC [ {self.__fechaNac} ] FECHA_ING [ {self.__fechaIng} ]'
     
 
     @property
@@ -23,11 +24,18 @@ class Cliente:
         self.__id = id
 
     @property
-    def dpi(self):
-        return self.__dpi
-    @dpi.setter
-    def dpi(self, dpi):
-        self.__dpi = dpi
+    def tipoDocumento(self):
+        return self.__tipoDocumento
+    @tipoDocumento.setter
+    def tipoDocumento(self, tipoDocumento):
+        self.__tipoDocumento = tipoDocumento
+
+    @property
+    def noDocumento(self):
+        return self.__noDocumento
+    @noDocumento.setter
+    def noDocumento(self, noDocumento):
+        self.__noDocumento = noDocumento
 
     @property
     def nombre(self):
