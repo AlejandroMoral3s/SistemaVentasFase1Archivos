@@ -37,13 +37,18 @@ class FacturasList:
     
     def agregarProductos(self, nombre, cant):
         prod = self.objProd.buscarProducto(nombre)
-        self.productos.append(prod)
-        self.total += prod['_Producto__precio']*cant
+        prod['_Producto__cant'] = cant
+        prod['_Producto__subtotal'] = (float(prod['_Producto__precio'])*int(prod['_Producto__cant']))
+        iva = prod['_Producto__subtotal']*(int(prod['_Producto__iva'])/100)
+        prod['_Producto__subtotal']+=iva
+        self.productos.append(prod)        
+        self.total += round(prod['_Producto__subtotal'],2)
     
 #PENDIENTE------------------------------------------------------
-#    def eliminarProducto(self, parametro):
-#        prod = self.objProd.buscarProducto(parametro)
-#        self.productos.remove(prod)
+    def eliminarProducto(self, parametro):
+        prod = self.objProd.buscarProducto(parametro)
+        self.total -= float(prod['_Producto__subtotal'])
+        self.productos.remove(prod)
         
     def limpiarFactura(self):
         self.productos.clear()
@@ -60,10 +65,9 @@ class FacturasList:
             self.productos.clear()    
             self.total = 0
 
-facturaL = FacturasList()
-facturaL.agregarProductos("tomate",9)
-facturaL.agregarProductos("cebolla",4)
-facturaL.limpiarFactura()
-productos = facturaL.productos
-total = facturaL.total
-facturaL.crearFactura(21,"10/08/2023","pancho",productos,total)
+#facturaL = FacturasList()
+#facturaL.agregarProductos("tomate","7")
+#facturaL.agregarProductos("zanahoria","5")
+#productos = facturaL.productos
+#total = facturaL.total
+#facturaL.crearFactura(33,"10/08/2023","ale",productos,total)

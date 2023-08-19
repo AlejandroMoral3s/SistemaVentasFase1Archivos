@@ -13,78 +13,50 @@
     "clients": [],
     "products": [
         {
-            "_Producto__id": 1,
+            "_Producto__id": 56,
+            "_Producto__descripcion": "zanahoria",
+            "_Producto__precio": "6",
+            "_Producto__iva": "5",
+            "_Producto__nota": "vegetal",
+            "_Producto__cant": 0,
+            "_Producto__subtotal": 0
+        },
+        {
+            "_Producto__id": 7,
             "_Producto__descripcion": "tomate",
-            "_Producto__precio": 4.5,
-            "_Producto__iva": 0.54,
-            "_Producto__nota": "vegetal"
-        },
-        {
-            "_Producto__id": 2,
-            "_Producto__descripcion": "cebolla",
-            "_Producto__precio": 4.5,
-            "_Producto__iva": 0.54,
-            "_Producto__nota": "vegetal"
-        },
-        {
-            "_Producto__id": 8,
-            "_Producto__descripcion": "cebolla",
-            "_Producto__precio": 4.5,
-            "_Producto__iva": 0.54,
-            "_Producto__nota": "vegetal"
+            "_Producto__precio": "4.5",
+            "_Producto__iva": "5",
+            "_Producto__nota": "vegetal",
+            "_Producto__cant": 0,
+            "_Producto__subtotal": 0
         }
     ],
     "facturas": [
         {
-            "_Factura__id": 6,
+            "_Factura__id": 33,
             "_Factura__fecha": "10/08/2023",
-            "_Factura__cliente": "maria",
+            "_Factura__cliente": "ale",
             "_Factura__productos": [
                 {
-                    "_Producto__id": 1,
+                    "_Producto__id": 7,
                     "_Producto__descripcion": "tomate",
-                    "_Producto__precio": 4.5,
-                    "_Producto__iva": 0.54,
-                    "_Producto__nota": "vegetal"
+                    "_Producto__precio": "4.5",
+                    "_Producto__iva": "5",
+                    "_Producto__nota": "vegetal",
+                    "_Producto__cant": "7",
+                    "_Producto__subtotal": 33.075
                 },
                 {
-                    "_Producto__id": 2,
-                    "_Producto__descripcion": "cebolla",
-                    "_Producto__precio": 4.5,
-                    "_Producto__iva": 0.54,
-                    "_Producto__nota": "vegetal"
+                    "_Producto__id": 56,
+                    "_Producto__descripcion": "zanahoria",
+                    "_Producto__precio": "6",
+                    "_Producto__iva": "5",
+                    "_Producto__nota": "vegetal",
+                    "_Producto__cant": "5",
+                    "_Producto__subtotal": 31.5
                 }
             ],
-            "_Factura__total": 13.5
-        },
-        {
-            "_Factura__id": 7,
-            "_Factura__fecha": "10/08/2023",
-            "_Factura__cliente": "juan",
-            "_Factura__productos": [
-                {
-                    "_Producto__id": 1,
-                    "_Producto__descripcion": "tomate",
-                    "_Producto__precio": 4.5,
-                    "_Producto__iva": 0.54,
-                    "_Producto__nota": "vegetal"
-                },
-                {
-                    "_Producto__id": 2,
-                    "_Producto__descripcion": "cebolla",
-                    "_Producto__precio": 4.5,
-                    "_Producto__iva": 0.54,
-                    "_Producto__nota": "vegetal"
-                }
-            ],
-            "_Factura__total": 58.5
-        },
-        {
-            "_Factura__id": 21,
-            "_Factura__fecha": "10/08/2023",
-            "_Factura__cliente": "pancho",
-            "_Factura__productos": [],
-            "_Factura__total": 0
+            "_Factura__total": 64.58
         }
     ]
 }
