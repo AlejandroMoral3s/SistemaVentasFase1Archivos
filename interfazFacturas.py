@@ -97,10 +97,10 @@ class Create_Factura(Frame):
         self.add = Button(self.root, text='Añadir', command=self.addProduct)
         self.add.grid(row=4, column=5, padx=(25,5), pady=5)
 
-        self.deleteRow = Button(self.root, text='Quitar')
+        self.deleteRow = Button(self.root, text='Quitar', command=self.deleteProduct)
         self.deleteRow.grid(row=4, column=6, padx=5, pady=5)
 
-        self.deleteAll = Button(self.root, text='Eliminar')
+        self.deleteAll = Button(self.root, text='Vaciar', command=self.deleteAllProducts)
         self.deleteAll.grid(row=4, column=7, padx=5, pady=5)
 
         self.totalFactura = 0
@@ -177,10 +177,32 @@ class Create_Factura(Frame):
         self.total_entry.delete(0, END)
 
     def deleteProduct(self):
-        pass
+        indexSeleccion = -1
+        seleccionado = self.tree.selection()[0]
+
+        self.metodosFacturas.eliminarProducto(self.tree.item(seleccionado)['values'][1])
+        self.totalFactura -= float(self.tree.item(seleccionado)['values'][4])
+        self.total_entry.delete(0, END)
+        self.total_entry.insert(0, round(self.totalFactura,1))
+
+        for children in self.tree.get_children():
+            indexSeleccion += 1
+            if seleccionado == children:
+                self.tree.delete(children)
+                break
 
     def deleteAllProducts(self):
-        pass
+        
+        self.idfac_entry['state'] = NORMAL
+        self.cliente_entry['state'] = NORMAL
+        self.fecha_entry['state'] = NORMAL
+        self.totalFactura = 0
+        self.EliminarEntrys()
+
+        for i in self.tree.get_children():
+            self.tree.delete(i)
+
+        self.metodosFacturas.limpiarFactura()
 
     def save_fac(self):
         self.AsigEntry()
@@ -191,7 +213,9 @@ class Create_Factura(Frame):
             if x['_Factura__id'] == self.temp_idFactura.get():
                 idFacturaExist
 
-        if idFacturaExist:
+        if self.idfac_entry.get() == '' or self.fecha_entry.get() == '' or self.cliente_entry.get() == '' or self.producto_entry.get()=='' or self.cantidad_entry.get() == '':
+            messagebox.showerror('ERROR AL INCLUIR PRODUCTO', 'Debe llenar todos los campos solicitados.')
+        elif idFacturaExist:
             messagebox.showerror('ERROR EN CREACION DE FACTURA', 'El id de factura ya existe.')
         else:
 
@@ -205,8 +229,3 @@ class Create_Factura(Frame):
             messagebox.showinfo('INFORMACION DE FACTURACION', 'La factura se creo correctamente.')
             self.root.destroy()
 
-
-
-root = Tk()
-Create_Factura(root)
-root.mainloop()

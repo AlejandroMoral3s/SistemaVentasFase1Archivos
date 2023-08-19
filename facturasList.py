@@ -47,7 +47,7 @@ class FacturasList:
 #PENDIENTE------------------------------------------------------
     def eliminarProducto(self, parametro):
         prod = self.objProd.buscarProducto(parametro)
-        self.total -= float(prod['_Producto__subtotal'])
+        self.total -= round(float(prod['_Producto__subtotal']), 1)
         self.productos.remove(prod)
         
     def limpiarFactura(self):
