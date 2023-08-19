@@ -468,8 +468,3 @@ class Client_Interface(Frame):
                     x['_Cliente__ciudad'], 
                     x['_Cliente__fechaNac'], 
                     x['_Cliente__fechaIng']])
-
-
-root = Tk()
-Client_Interface(root)
-root.mainloop()
