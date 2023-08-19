@@ -46,9 +46,9 @@ class Create_product(Frame):
         self.priceEntry.grid(row=2, column=2, columnspan=3, sticky='ew', padx=(0,15), pady=(15,15))
 
         # PROFILE
-        self.ivaLabel = Label(self.root, text='IVA: ', background=self.colorFondo, fg='white')
+        self.ivaLabel = Label(self.root, text='IVA(%): ', background=self.colorFondo, fg='white')
         self.ivaLabel.grid(row=2, column=5, columnspan=2, sticky='ew', padx=(15,0), pady=(15,15))
-        self.ivaEntry = ttk.Combobox(self.root, values=['5%', '12%'], textvariable=self.temp_iva)
+        self.ivaEntry = ttk.Combobox(self.root, values=['5', '12'], textvariable=self.temp_iva)
         self.ivaEntry.grid(row=2, column=7, columnspan=3, sticky='ew', padx=(0,15), pady=(15,15))
 
         # LAST NAMES
