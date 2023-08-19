@@ -10,20 +10,7 @@
             "_Usuario__confirmacion": "123"
         }
     ],
-    "clients": [
-        {
-            "_Cliente__id": 12,
-            "_Cliente__tipoDocumento": "DPI",
-            "_Cliente__numDocumento": "54654658965",
-            "_Cliente__nombre": "Pepe",
-            "_Cliente__apellido": "Garcia",
-            "_Cliente__direccion": "zona 2",
-            "_Cliente__telefono": "4587966",
-            "_Cliente__ciudad": "xela",
-            "_Cliente__fechaNac": "24/04/2003",
-            "_Cliente__fechaIng": "12/08/2023"
-        }
-    ],
+    "clients": [],
     "products": [
         {
             "_Producto__id": 1,
@@ -38,6 +25,59 @@
             "_Producto__precio": 4.5,
             "_Producto__iva": 0.54,
             "_Producto__nota": "vegetal"
+        },
+        {
+            "_Producto__id": 8,
+            "_Producto__descripcion": "cebolla",
+            "_Producto__precio": 4.5,
+            "_Producto__iva": 0.54,
+            "_Producto__nota": "vegetal"
+        }
+    ],
+    "facturas": [
+        {
+            "_Factura__id": 6,
+            "_Factura__fecha": "10/08/2023",
+            "_Factura__cliente": "maria",
+            "_Factura__productos": [
+                {
+                    "_Producto__id": 1,
+                    "_Producto__descripcion": "tomate",
+                    "_Producto__precio": 4.5,
+                    "_Producto__iva": 0.54,
+                    "_Producto__nota": "vegetal"
+                },
+                {
+                    "_Producto__id": 2,
+                    "_Producto__descripcion": "cebolla",
+                    "_Producto__precio": 4.5,
+                    "_Producto__iva": 0.54,
+                    "_Producto__nota": "vegetal"
+                }
+            ],
+            "_Factura__total": 13.5
+        },
+        {
+            "_Factura__id": 7,
+            "_Factura__fecha": "10/08/2023",
+            "_Factura__cliente": "juan",
+            "_Factura__productos": [
+                {
+                    "_Producto__id": 1,
+                    "_Producto__descripcion": "tomate",
+                    "_Producto__precio": 4.5,
+                    "_Producto__iva": 0.54,
+                    "_Producto__nota": "vegetal"
+                },
+                {
+                    "_Producto__id": 2,
+                    "_Producto__descripcion": "cebolla",
+                    "_Producto__precio": 4.5,
+                    "_Producto__iva": 0.54,
+                    "_Producto__nota": "vegetal"
+                }
+            ],
+            "_Factura__total": 58.5
         }
     ]
 }

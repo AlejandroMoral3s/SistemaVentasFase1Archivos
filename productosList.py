@@ -22,9 +22,11 @@ class ProductosList:
             json.dump(self.dataJson,file,indent=4)
         
     
-    def buscarProducto(self, id):    
+    def buscarProducto(self, parametro):    
         for Producto in self.dataJson['products']:
-            if(Producto['_Producto__id']==id):
+            if(Producto['_Producto__id']==parametro):
+                return Producto
+            elif(Producto['_Producto__descripcion']==parametro):
                 return Producto
         return None
     
@@ -61,6 +63,3 @@ class ProductosList:
         else:
             print("Este producto no existe")        
 
-
-productoL=ProductosList()
-productoL.crearProducto(2,"cebolla",4.5,0.54,"vegetal")
