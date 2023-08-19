@@ -24,7 +24,7 @@ class ClientesList:
     
     def buscarCliente(self, num):    
         for cliente in self.dataJson['clients']:
-            if(cliente['_Cliente__numDocumento']==num):
+            if(cliente['_Cliente__noDocumento']==num):
                 return cliente
         return None
     
@@ -46,7 +46,7 @@ class ClientesList:
         cliTemp=self.buscarCliente(numDocumentoAnt)
         if(cliTemp!=None):            
             cliTemp['_Cliente__tipoDocumento'] = tipoDocumento     
-            cliTemp['_Cliente__numDocumento'] = numDocumento
+            cliTemp['_Cliente__noDocumento'] = numDocumento
             cliTemp['_Cliente__nombre'] = nombre
             cliTemp['_Cliente__apellido'] = apellido
             cliTemp['_Cliente__direccion'] = direccion
@@ -65,8 +65,3 @@ class ClientesList:
             self.guardar()
         else:
             print("Este cliente no existe")        
-
-
-clienteL=ClientesList()
-clienteL.editarCliente("DPI","54654658965","Pepe","Garcia","zona 2","4587966","xela","24/04/2003","12/08/2023")
-#clienteL.borrarCliente("558965")

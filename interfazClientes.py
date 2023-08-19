@@ -3,7 +3,7 @@ from tkinter import ttk
 from clientesList import ClientesList
 from interfazCrearClientes import Create_client
 from tkinter import messagebox
-
+from tkcalendar import DateEntry
 
 class Client_Interface(Frame):
     def __init__(self, root):
@@ -86,13 +86,13 @@ class Client_Interface(Frame):
         # FECHA DE NACIMIENTO
         self.nacDate_label = Label(self.root, text='Fecha de Nacimiento: ', background=self.colorFondo, fg='white')
         self.nacDate_label.grid(row=5, column=0, columnspan=2, sticky='ew', padx=(15,0), pady=(15,15))
-        self.nacDate_entry = Entry(self.root, textvariable=self.temp_nacDate, state=DISABLED)
+        self.nacDate_entry = DateEntry(self.root, textvariable=self.temp_nacDate, state=DISABLED)
         self.nacDate_entry.grid(row=5, column=2, columnspan=3, sticky='ew', padx=(0,15), pady=(15,15))
 
         # FECHA DE INGRESO
         self.ingDate_label = Label(self.root, text='Fecha de Ingreso: ', background=self.colorFondo, fg='white')
         self.ingDate_label.grid(row=5, column=5, columnspan=2, sticky='ew', padx=(15,0), pady=(15,15))
-        self.ingDate_entry = Entry(self.root, textvariable=self.temp_ingDate, state=DISABLED)
+        self.ingDate_entry = DateEntry(self.root, textvariable=self.temp_ingDate, state=DISABLED)
         self.ingDate_entry.grid(row=5, column=7, columnspan=3, sticky='ew', padx=(0,15), pady=(15,15))
 
         #OPCIONES BUSCAR
@@ -173,7 +173,7 @@ class Client_Interface(Frame):
                 values=[
                     x['_Cliente__id'], 
                     x['_Cliente__tipoDocumento'], 
-                    x['_Cliente__numDocumento'], 
+                    x['_Cliente__noDocumento'], 
                     x['_Cliente__nombre'], 
                     x['_Cliente__apellido'], 
                     x['_Cliente__direccion'], 
@@ -290,7 +290,7 @@ class Client_Interface(Frame):
             noIdExist = False
 
             for x in self.listadoDict:
-                if (x['_Cliente__numDocumento'] == self.temp_noId.get()) and (x['_Cliente__numDocumento'] != registroActualStr[2]):
+                if (x['_Cliente__noDocumento'] == self.temp_noId.get()) and (x['_Cliente__noDocumento'] != registroActualStr[2]):
                     noIdExist = True
 
             if (self.idType_entry.get() == '' or self.noId_Entry.get() == '' or self.names_entry.get() == '' or self.lastNames_entry.get() == '' or self.adress_entry.get() == '' or self.phone_entry.get() == '' or self.city_entry.get() == '' or self.nacDate_entry.get() == '' or self.ingDate_entry.get() == ''):
@@ -460,7 +460,7 @@ class Client_Interface(Frame):
                 values=[
                     x['_Cliente__id'], 
                     x['_Cliente__tipoDocumento'], 
-                    x['_Cliente__numDocumento'], 
+                    x['_Cliente__noDocumento'], 
                     x['_Cliente__nombre'], 
                     x['_Cliente__apellido'], 
                     x['_Cliente__direccion'], 

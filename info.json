@@ -21,16 +21,28 @@
     ],
     "clients": [
         {
-            "_Cliente__id": 12,
+            "_Cliente__id": 1,
             "_Cliente__tipoDocumento": "DPI",
-            "_Cliente__numDocumento": "54654658965",
-            "_Cliente__nombre": "Pepe",
-            "_Cliente__apellido": "Garcia",
-            "_Cliente__direccion": "zona 2",
-            "_Cliente__telefono": "4587966",
-            "_Cliente__ciudad": "xela",
-            "_Cliente__fechaNac": "24/04/2003",
-            "_Cliente__fechaIng": "12/08/2023"
+            "_Cliente__noDocumento": "12345",
+            "_Cliente__nombre": "Alejandro",
+            "_Cliente__apellido": "Morales",
+            "_Cliente__direccion": "zona 3",
+            "_Cliente__telefono": "42871602",
+            "_Cliente__ciudad": "Tactic",
+            "_Cliente__fechaNac": "5/26/02",
+            "_Cliente__fechaIng": "8/18/23"
+        },
+        {
+            "_Cliente__id": 2,
+            "_Cliente__tipoDocumento": "PASAPORTE",
+            "_Cliente__noDocumento": "12346",
+            "_Cliente__nombre": "Rafael",
+            "_Cliente__apellido": "Ortiz",
+            "_Cliente__direccion": "zona 5",
+            "_Cliente__telefono": "3465421",
+            "_Cliente__ciudad": "Chamelco",
+            "_Cliente__fechaNac": "8/1/23",
+            "_Cliente__fechaIng": "8/18/23"
         }
     ],
     "products": [
