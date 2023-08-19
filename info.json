@@ -78,6 +78,13 @@
                 }
             ],
             "_Factura__total": 58.5
+        },
+        {
+            "_Factura__id": 21,
+            "_Factura__fecha": "10/08/2023",
+            "_Factura__cliente": "pancho",
+            "_Factura__productos": [],
+            "_Factura__total": 0
         }
     ]
 }

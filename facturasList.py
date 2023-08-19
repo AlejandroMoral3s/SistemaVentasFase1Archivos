@@ -39,7 +39,15 @@ class FacturasList:
         prod = self.objProd.buscarProducto(nombre)
         self.productos.append(prod)
         self.total += prod['_Producto__precio']*cant
+    
+#PENDIENTE------------------------------------------------------
+#    def eliminarProducto(self, parametro):
+#        prod = self.objProd.buscarProducto(parametro)
+#        self.productos.remove(prod)
         
+    def limpiarFactura(self):
+        self.productos.clear()
+        self.total=0
     
     #crea un objeto Factura, lo agrega al array y por ultimo actualiza el json    
     def crearFactura(self, id, fecha, cliente, productos, total):
@@ -55,6 +63,7 @@ class FacturasList:
 facturaL = FacturasList()
 facturaL.agregarProductos("tomate",9)
 facturaL.agregarProductos("cebolla",4)
+facturaL.limpiarFactura()
 productos = facturaL.productos
 total = facturaL.total
-facturaL.crearFactura(7,"10/08/2023","juan",productos,total)
+facturaL.crearFactura(21,"10/08/2023","pancho",productos,total)
