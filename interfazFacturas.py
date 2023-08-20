@@ -150,7 +150,7 @@ class Create_Factura(Frame):
                     ])
                     self.totalFactura += subtotalConIva
                     self.total_entry.delete(0, END)
-                    self.total_entry.insert(0, round(self.totalFactura,1))
+                    self.total_entry.insert(0, round(self.totalFactura,2))
                     self.metodosFacturas.agregarProductos(producto['_Producto__descripcion'], self.temp_cantidad.get())
 
                     self.producto_entry.delete(0, END) 
