@@ -201,7 +201,7 @@ class Create_Factura(Frame):
         idFacturaExist = False
 
         for x in self.diccFacturas:
-            if x['_Factura__id'] == self.temp_idFactura.get():
+            if x['_Factura__id'] == int(self.temp_idFactura.get()):
                 idFacturaExist
 
         if self.idfac_entry.get() == '' or self.fecha_entry.get() == '' or self.cliente_entry.get() == '':
@@ -211,7 +211,7 @@ class Create_Factura(Frame):
         else:
 
             self.metodosFacturas.crearFactura(
-                self.temp_idFactura.get(), 
+                int(self.temp_idFactura.get()), 
                 self.temp_fecha.get(),
                 self.temp_cliente.get(),
                 self.metodosFacturas.productos,

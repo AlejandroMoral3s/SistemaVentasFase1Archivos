@@ -5,6 +5,7 @@ from clientesList import ClientesList
 from productosList import ProductosList
 from facturasList import FacturasList
 from tkinter import messagebox
+from reporteFacturas import *
 
 class Report_Interface(Frame):
 
@@ -204,9 +205,12 @@ class Report_Interface(Frame):
         listaIds = []
 
         for row in self.tree.get_children():
-            listaIds.append(self.tree.item(row)['values'][0])
+            listaIds.append(int(self.tree.item(row)['values'][0]))
 
         print(listaIds)
+        reportePdf = ReporteFacturas()
+        reportePdf.getIDS(listaIds)
+        print(reportePdf.ids)
 
 root = Tk()
 Report_Interface(root)
