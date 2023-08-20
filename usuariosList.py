@@ -64,5 +64,4 @@ class UsuariosList:
             print("Este user no existe")        
 
 
-usuarioL=UsuariosList()
-usuarioL.borrarUsuario("marcds")
+

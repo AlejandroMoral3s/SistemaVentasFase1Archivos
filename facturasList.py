@@ -66,8 +66,7 @@ class FacturasList:
             self.total = 0
 
 #facturaL = FacturasList()
-#facturaL.agregarProductos("tomate","7")
-#facturaL.agregarProductos("zanahoria","5")
+#facturaL.agregarProductos("tomate","2")
 #productos = facturaL.productos
 #total = facturaL.total
-#facturaL.crearFactura(33,"10/08/2023","ale",productos,total)
+#facturaL.crearFactura(5,"10/08/2023","rafael",productos,total)

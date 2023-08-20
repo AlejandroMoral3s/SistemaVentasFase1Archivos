@@ -67,6 +67,6 @@ class ClientesList:
             print("Este cliente no existe")        
 
 
-clienteL=ClientesList()
-clienteL.editarCliente("DPI","54654658965","Pepe","Garcia","zona 2","4587966","xela","24/04/2003","12/08/2023")
+#clienteL=ClientesList()
+#clienteL.editarCliente("DPI","54654658965","Pepe","Garcia","zona 2","4587966","xela","24/04/2003","12/08/2023")
 #clienteL.borrarCliente("558965")

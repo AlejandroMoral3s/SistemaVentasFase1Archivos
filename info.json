@@ -57,6 +57,49 @@
                 }
             ],
             "_Factura__total": 64.58
+        },
+        {
+            "_Factura__id": 2,
+            "_Factura__fecha": "10/08/2023",
+            "_Factura__cliente": "juan",
+            "_Factura__productos": [
+                {
+                    "_Producto__id": 7,
+                    "_Producto__descripcion": "tomate",
+                    "_Producto__precio": "4.5",
+                    "_Producto__iva": "5",
+                    "_Producto__nota": "vegetal",
+                    "_Producto__cant": "2",
+                    "_Producto__subtotal": 9.45
+                },
+                {
+                    "_Producto__id": 56,
+                    "_Producto__descripcion": "zanahoria",
+                    "_Producto__precio": "6",
+                    "_Producto__iva": "5",
+                    "_Producto__nota": "vegetal",
+                    "_Producto__cant": "5",
+                    "_Producto__subtotal": 31.5
+                }
+            ],
+            "_Factura__total": 40.95
+        },
+        {
+            "_Factura__id": 5,
+            "_Factura__fecha": "10/08/2023",
+            "_Factura__cliente": "rafael",
+            "_Factura__productos": [
+                {
+                    "_Producto__id": 7,
+                    "_Producto__descripcion": "tomate",
+                    "_Producto__precio": "4.5",
+                    "_Producto__iva": "5",
+                    "_Producto__nota": "vegetal",
+                    "_Producto__cant": "2",
+                    "_Producto__subtotal": 9.45
+                }
+            ],
+            "_Factura__total": 9.45
         }
     ]
 }
