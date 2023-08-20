@@ -23,43 +23,6 @@ class Client_Interface(Frame):
         self.root.title('INTERFAZ DE CLIENTES')
         self.root.configure(bg=self.colorFondo)
 
-
-        self.iconoBuscar = PhotoImage(file='images/buscar.png')
-        self.iconoBuscar = self.iconoBuscar.subsample(8)
-
-        self.iconoActualizar = PhotoImage(file='images/actualizar.png')
-        self.iconoActualizar = self.iconoActualizar.subsample(8)
-
-        self.iconoAnterior = PhotoImage(file='images/anterior.png')
-        self.iconoAnterior = self.iconoAnterior.subsample(8)
-
-        self.iconoBorrar = PhotoImage(file='images/borrar.png')
-        self.iconoBorrar = self.iconoBorrar.subsample(8)
-
-        self.iconoCancelar = PhotoImage(file='images/cancelar.png')
-        self.iconoCancelar = self.iconoCancelar.subsample(8)
-
-        self.iconoCrear = PhotoImage(file='images/crear.png')
-        self.iconoCrear = self.iconoCrear.subsample(8)
-
-        self.iconoEditar = PhotoImage(file='images/editar.png')
-        self.iconoEditar = self.iconoEditar.subsample(8)
-
-        self.iconoGuardar = PhotoImage(file='images/guardar.png')
-        self.iconoGuardar = self.iconoGuardar.subsample(8)
-
-        self.iconoPrimero = PhotoImage(file='images/primero.png')
-        self.iconoPrimero = self.iconoPrimero.subsample(8)
-
-        self.iconoQuitar = PhotoImage(file='images/quitar.png')
-        self.iconoQuitar = self.iconoQuitar.subsample(8)
-                                                      
-        self.iconoSiguiente = PhotoImage(file='images/siguiente.png')
-        self.iconoSiguiente = self.iconoSiguiente.subsample(8)
-
-        self.iconoUltimo = PhotoImage(file='images/ultimo.png')
-        self.iconoUltimo = self.iconoUltimo.subsample(8)
-
         #Creando variables temporales
         self.temp_clientId = StringVar()
         self.temp_idType = StringVar()
@@ -144,40 +107,40 @@ class Client_Interface(Frame):
         self.buscar_label.grid(row=7, column=0, columnspan=3, pady=20, sticky='e')
         self.buscar_entry = Entry(self.root, textvariable=self.temp_BuscarUser)
         self.buscar_entry.grid(row=7, column=4, columnspan=4, pady=20, sticky='w')
-        self.buscar_btn = Button(self.root, text='BUSCAR REGISTRO', command=self.buscarRegistro, image=self.iconoBuscar)
+        self.buscar_btn = Button(self.root, text='BUSCAR REGISTRO', command=self.buscarRegistro)
         self.buscar_btn.grid(row=7, column=7, columnspan=3, pady=20, sticky='w')
 
         #BOTONES DE DESPLAZAMIENTO
-        self.first_btn = Button(self.root, text='Primero', command=self.ir_al_primer_registro, image=self.iconoPrimero)
+        self.first_btn = Button(self.root, text='Primero', command=self.ir_al_primer_registro)
         self.first_btn.grid(row=6, column=0, padx=(10,3), pady=5)
 
-        self.previous_btn = Button(self.root, text='Anterior', command=self.ir_al_registro_anterior, image=self.iconoAnterior)
+        self.previous_btn = Button(self.root, text='Anterior', command=self.ir_al_registro_anterior)
         self.previous_btn.grid(row=6, column=1, padx=3, pady=5)
 
-        self.next_btn = Button(self.root, text='Siguiente', command=self.ir_al_siguiente_registro, image=self.iconoSiguiente)
+        self.next_btn = Button(self.root, text='Siguiente', command=self.ir_al_siguiente_registro)
         self.next_btn.grid(row=6, column=2, padx=3, pady=5)
 
-        self.last_btn = Button(self.root, text='Ultimo', command = self.ir_al_ultimo_registro, image=self.iconoUltimo)
+        self.last_btn = Button(self.root, text='Ultimo', command = self.ir_al_ultimo_registro)
         self.last_btn.grid(row=6, column=3, padx=3, pady=5)
 
-        self.last_btn = Button(self.root, text='Actualizar', command=self.actualizarTabla, image=self.iconoActualizar)
+        self.last_btn = Button(self.root, text='Actualizar', command=self.actualizarTabla)
         self.last_btn.grid(row=6, column=4, padx=(3, 10), pady=5)
 
         #BOTONES DE MANIPULACION DE DATOS
 
-        self.create_btn = Button(self.root, text='Crear', command=self.ventanaCrearCliente, image=self.iconoCrear)
+        self.create_btn = Button(self.root, text='Crear', command=self.ventanaCrearCliente)
         self.create_btn.grid(row=6, column=5, padx=(10, 3), pady=15)
 
-        self.edit_btn = Button(self.root, text='Editar', command=self.editarRegistro, image = self.iconoEditar)
+        self.edit_btn = Button(self.root, text='Editar', command=self.editarRegistro)
         self.edit_btn.grid(row=6, column=6, padx=3, pady=15)
 
-        self.save_btn = Button(self.root, text='Guardar', state=DISABLED, command=self.guardarCambios, image=self.iconoGuardar)
+        self.save_btn = Button(self.root, text='Guardar', state=DISABLED, command=self.guardarCambios)
         self.save_btn.grid(row=6, column=7, padx=3, pady=15)
 
-        self.delete_btn = Button(self.root, text='Borrar', command=self.eliminarRegistro, image=self.iconoBorrar)
+        self.delete_btn = Button(self.root, text='Borrar', command=self.eliminarRegistro)
         self.delete_btn.grid(row=6, column=8, padx=3, pady=15)
 
-        self.cancel_btn = Button(self.root, text='Cancelar', state=DISABLED, command=self.cancelarEdicion, image=self.iconoCancelar )
+        self.cancel_btn = Button(self.root, text='Cancelar', state=DISABLED, command=self.cancelarEdicion )
         self.cancel_btn.grid(row=6, column=9, padx=(3,20), pady=15)
 
         #INCLUYENDO TABLA

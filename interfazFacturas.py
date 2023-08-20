@@ -15,21 +15,6 @@ class Create_Factura(Frame):
         self.metodosProductos = ProductosList()
 
 
-
-        self.iconoBorrar = PhotoImage(file='images/borrar.png')
-        self.iconoBorrar = self.iconoBorrar.subsample(8)
-
-        self.iconoCrear = PhotoImage(file='images/crear.png')
-        self.iconoCrear = self.iconoCrear.subsample(8)
-
-        self.iconoGuardar = PhotoImage(file='images/guardar.png')
-        self.iconoGuardar = self.iconoGuardar.subsample(8)
-
-
-        self.iconoQuitar = PhotoImage(file='images/quitar.png')
-        self.iconoQuitar = self.iconoQuitar.subsample(8)
-
-
         self.diccFacturas = self.metodosFacturas.dataJson['facturas']
         self.diccClientes = self.metodosClientes.dataJson['clients']
         self.diccProductos = self.metodosProductos.dataJson['products']
@@ -101,18 +86,18 @@ class Create_Factura(Frame):
         
 
         #BOTONES DE DESPLAZAMIENTO
-        self.add = Button(self.root, text='Añadir', command=self.addProduct, image=self.iconoCrear)
+        self.add = Button(self.root, text='Añadir', command=self.addProduct)
         self.add.grid(row=4, column=5, padx=(25,5), pady=5)
 
-        self.deleteRow = Button(self.root, text='Quitar', command=self.deleteProduct, image= self.iconoQuitar)
+        self.deleteRow = Button(self.root, text='Quitar', command=self.deleteProduct)
         self.deleteRow.grid(row=4, column=6, padx=5, pady=5)
 
-        self.deleteAll = Button(self.root, text='Vaciar', command=self.deleteAllProducts, image=self.iconoBorrar)
+        self.deleteAll = Button(self.root, text='Vaciar', command=self.deleteAllProducts)
         self.deleteAll.grid(row=4, column=7, padx=5, pady=5)
 
         self.totalFactura = 0
 
-        self.saveFac = Button(self.root, text='Guardar', command=self.save_fac, image=self.iconoGuardar)
+        self.saveFac = Button(self.root, text='Guardar', command=self.save_fac)
         self.saveFac.grid(row=4, column=8, padx=5, pady=5)
 
 
