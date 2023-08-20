@@ -43,18 +43,6 @@
             "_Cliente__ciudad": "Chamelco",
             "_Cliente__fechaNac": "8/1/23",
             "_Cliente__fechaIng": "8/18/23"
-        },
-        {
-            "_Cliente__id": 3,
-            "_Cliente__tipoDocumento": "DPI",
-            "_Cliente__noDocumento": "123457",
-            "_Cliente__nombre": "Marina",
-            "_Cliente__apellido": "Velasquez",
-            "_Cliente__direccion": "zona4",
-            "_Cliente__telefono": "651321",
-            "_Cliente__ciudad": "Chamelco",
-            "_Cliente__fechaNac": "8/17/06",
-            "_Cliente__fechaIng": "8/19/23"
         }
     ],
     "products": [
@@ -81,65 +69,6 @@
         }
     ],
     "facturas": [
-        {
-            "_Factura__id": 1,
-            "_Factura__fecha": "8/17/23",
-            "_Factura__cliente": "Alejandro",
-            "_Factura__productos": [
-                {
-                    "_Producto__id": 1,
-                    "_Producto__descripcion": "tomate",
-                    "_Producto__precio": 4.5,
-                    "_Producto__iva": "5",
-                    "_Producto__nota": "vegetal",
-                    "_Producto__cant": "3",
-                    "_Producto__subtotal": 14.175
-                },
-                {
-                    "_Producto__id": 2,
-                    "_Producto__descripcion": "cebolla",
-                    "_Producto__precio": 4.5,
-                    "_Producto__iva": "12",
-                    "_Producto__nota": "vegetal",
-                    "_Producto__cant": "4",
-                    "_Producto__subtotal": 20.16
-                }
-            ],
-            "_Factura__total": 34.4
-        },
-        {
-            "_Factura__id": 2,
-            "_Factura__fecha": "8/19/23",
-            "_Factura__cliente": "Rafael",
-            "_Factura__productos": [
-                {
-                    "_Producto__id": 3,
-                    "_Producto__descripcion": "tamarindo",
-                    "_Producto__precio": "2.1",
-                    "_Producto__iva": "12",
-                    "_Producto__nota": "Fruta",
-                    "_Producto__cant": "6",
-                    "_Producto__subtotal": 14.112000000000002
-                }
-            ],
-            "_Factura__total": 14.1
-        },
-        {
-            "_Factura__id": 3,
-            "_Factura__fecha": "8/22/23",
-            "_Factura__cliente": "Rafael",
-            "_Factura__productos": [
-                {
-                    "_Producto__id": 2,
-                    "_Producto__descripcion": "cebolla",
-                    "_Producto__precio": 4.5,
-                    "_Producto__iva": "12",
-                    "_Producto__nota": "vegetal",
-                    "_Producto__cant": "7",
-                    "_Producto__subtotal": 35.28
-                }
-            ],
-            "_Factura__total": 35.3
-        }
+        
     ]
 }

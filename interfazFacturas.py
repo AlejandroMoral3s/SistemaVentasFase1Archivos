@@ -14,6 +14,22 @@ class Create_Factura(Frame):
         self.metodosClientes = ClientesList()
         self.metodosProductos = ProductosList()
 
+
+
+        self.iconoBorrar = PhotoImage(file='images/borrar.png')
+        self.iconoBorrar = self.iconoBorrar.subsample(8)
+
+        self.iconoCrear = PhotoImage(file='images/crear.png')
+        self.iconoCrear = self.iconoCrear.subsample(8)
+
+        self.iconoGuardar = PhotoImage(file='images/guardar.png')
+        self.iconoGuardar = self.iconoGuardar.subsample(8)
+
+
+        self.iconoQuitar = PhotoImage(file='images/quitar.png')
+        self.iconoQuitar = self.iconoQuitar.subsample(8)
+
+
         self.diccFacturas = self.metodosFacturas.dataJson['facturas']
         self.diccClientes = self.metodosClientes.dataJson['clients']
         self.diccProductos = self.metodosProductos.dataJson['products']
@@ -43,8 +59,8 @@ class Create_Factura(Frame):
 
 
         # TITLE
-        self.title_Label = Label(self.root, text='FORMULARIO PARA CREACION DE FACTURAS ', background=self.colorFondo, fg='white')
-        self.title_Label.grid(row=0, column=0, columnspan=10)
+        self.title_Label = Label(self.root, text='FORMULARIO PARA CREACION DE FACTURAS ', background=self.colorFondo, fg='white', font=('Times',20))
+        self.title_Label.grid(row=0, column=0, columnspan=10, pady=20)
 
         # ID FACTURA
         self.idfac_label = Label(self.root, text='Id Factura: ', background=self.colorFondo, fg='white')
@@ -85,18 +101,18 @@ class Create_Factura(Frame):
         
 
         #BOTONES DE DESPLAZAMIENTO
-        self.add = Button(self.root, text='Añadir', command=self.addProduct)
+        self.add = Button(self.root, text='Añadir', command=self.addProduct, image=self.iconoCrear)
         self.add.grid(row=4, column=5, padx=(25,5), pady=5)
 
-        self.deleteRow = Button(self.root, text='Quitar', command=self.deleteProduct)
+        self.deleteRow = Button(self.root, text='Quitar', command=self.deleteProduct, image= self.iconoQuitar)
         self.deleteRow.grid(row=4, column=6, padx=5, pady=5)
 
-        self.deleteAll = Button(self.root, text='Vaciar', command=self.deleteAllProducts)
+        self.deleteAll = Button(self.root, text='Vaciar', command=self.deleteAllProducts, image=self.iconoBorrar)
         self.deleteAll.grid(row=4, column=7, padx=5, pady=5)
 
         self.totalFactura = 0
 
-        self.saveFac = Button(self.root, text='Guardar', command=self.save_fac)
+        self.saveFac = Button(self.root, text='Guardar', command=self.save_fac, image=self.iconoGuardar)
         self.saveFac.grid(row=4, column=8, padx=5, pady=5)
 
 
@@ -220,3 +236,6 @@ class Create_Factura(Frame):
             messagebox.showinfo('INFORMACION DE FACTURACION', 'La factura se creo correctamente.')
             self.root.destroy()
 
+root = Tk()
+Create_Factura(root)
+root.mainloop()
