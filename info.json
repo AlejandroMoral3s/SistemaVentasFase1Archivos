@@ -83,7 +83,7 @@
     "facturas": [
         {
             "_Factura__id": "1",
-            "_Factura__fecha": "8/19/23",
+            "_Factura__fecha": "8/17/23",
             "_Factura__cliente": "Alejandro",
             "_Factura__productos": [
                 {
@@ -126,7 +126,7 @@
         },
         {
             "_Factura__id": "3",
-            "_Factura__fecha": "8/19/23",
+            "_Factura__fecha": "8/22/23",
             "_Factura__cliente": "Rafael",
             "_Factura__productos": [
                 {
