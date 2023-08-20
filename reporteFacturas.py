@@ -13,6 +13,19 @@ class ReporteFacturas():
     listanombreproductos = []
     ids = [33]
     
+    
+    def header(self, pdf):
+        # Logo
+        pdf.image('images/logoUsac.png', x=10, y =10, w=30, h=30)
+        # Arial bold 15
+        pdf.set_font('Arial', 'B', 25)
+        # Title
+        pdf.cell(w = 0, h = 15, txt = 'Encabezado', border=1, ln=1, align='C', fill=0)
+        # Line break
+        pdf.ln(5)
+        
+        
+    
     def getIDS(self, idsList):
         self.ids=idsList 
         self.crearTabla()       
@@ -56,9 +69,7 @@ class ReporteFacturas():
     def crearTabla(self):
         pdf = FPDF(orientation='L', unit='mm',format='A4')
         pdf.add_page()
-        
-        
-        
+        self.header(pdf)        
         self.setEncabezado(pdf)
 
 rep = ReporteFacturas()
