@@ -207,10 +207,8 @@ class Report_Interface(Frame):
         for row in self.tree.get_children():
             listaIds.append(int(self.tree.item(row)['values'][0]))
 
-        print(listaIds)
         reportePdf = ReporteFacturas()
         reportePdf.getIDS(listaIds)
-        print(reportePdf.ids)
 
 root = Tk()
 Report_Interface(root)

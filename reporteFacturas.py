@@ -5,7 +5,7 @@ import random
 ##	210 x 297 mm
 class ReporteFacturas():
     
-    name = 'hoja'# random.randint(1,1000)
+    name = 'hoja' #random.randint(1,1000)
     factura = FacturasList()
     facturaList = factura.dataJson['facturas']
     facturasReporte = []
@@ -16,11 +16,11 @@ class ReporteFacturas():
     
     def header(self, pdf):
         # Logo
-        pdf.image('images/logoUsac.png', x=10, y =10, w=10, h=10)
+        pdf.image('images/logoUsac.png', x=20, y =10, w=25, h=25)
         # Arial bold 15
         pdf.set_font('Arial', 'B', 25)
         # Title
-        pdf.cell(w = 0, h = 15, txt = 'Encabezado', border=1, ln=1, align='C', fill=0)
+        pdf.cell(w = 0, h = 25, txt = 'REPORTE DE FACTURACION', border=1, ln=1, align='C', fill=0)
         # Line break
         pdf.ln(5)
         
