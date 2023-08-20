@@ -11,7 +11,13 @@ class Client_Interface(Frame):
         
         self.metodosClientes = ClientesList()
 
-        self.colorFondo = '#695AD6'
+        self.colorFondo = '#502940'
+        self.colorRojo= '#790614'
+        self.colorCrema = '#f9f6ec'
+        self.colorCeleste = '#88a1a8'
+        
+        self.colorNegro = '#0d0c0c'
+
 
         self.root = root
         self.root.title('INTERFAZ DE CLIENTES')
@@ -450,6 +456,7 @@ class Client_Interface(Frame):
         root.mainloop()
 
     def actualizarTabla(self):
+
         self.metodosClientes = ClientesList()
         self.listadoDict = self.metodosClientes.dataJson['clients']
 

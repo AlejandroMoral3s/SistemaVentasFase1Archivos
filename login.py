@@ -13,7 +13,15 @@ class Login_window(Frame):
         
         self.root = root
         self.root.title('Sistema de Ventas')
-        
+
+        self.colorRojo= '#790614'
+        self.colorCrema = '#f9f6ec'
+        self.colorCeleste = '#88a1a8'
+        self.colorMorado = '#502940'
+        self.colorNegro = '#0d0c0c'
+
+        self.root.config(bg=self.colorMorado)
+
         self.dataJson = {}
         self.obtain_data_json()
 
@@ -21,15 +29,15 @@ class Login_window(Frame):
 
         #Creating frames
 
-        self.imageFrame = Frame(self.root, bg='red')
+        self.imageFrame = Frame(self.root, bg=self.colorMorado)
         self.imageFrame.grid(row=0, column = 0, padx=5, pady=5)
 
-        self.dataFrame = Frame(self.root, bg='lightBlue', width=250, height=200)
+        self.dataFrame = Frame(self.root, bg=self.colorMorado, width=250, height=200)
         self.dataFrame.grid(row=0, column = 1, padx=5, pady=5)
         self.dataFrame.pack_propagate(False)
 
-        self.logo = PhotoImage(file='images/logo.png')
-        self.logo = self.logo.subsample(10)
+        self.logo = PhotoImage(file='images/logoUsac.png')
+        self.logo = self.logo.subsample(3)
 
         #Create labelImage
 
@@ -40,27 +48,27 @@ class Login_window(Frame):
         self.username = StringVar()
         self.password = StringVar()
 
-        self.label_user = Label(self.dataFrame, text='USER: ')
+        self.label_user = Label(self.dataFrame, text='USER: ', bg=self.colorMorado, font='Times', fg=self.colorCrema)
         self.label_user.grid(row=0, column=0, padx=5, pady=5)
 
-        self.entry_user = Entry(self.dataFrame, textvariable=self.username)
+        self.entry_user = Entry(self.dataFrame, textvariable=self.username, bg = self.colorCrema)
         self.entry_user.grid(row=0, column=1, padx=5, pady=5)
         self.entry_user.focus()
 
         #Create fields PASSWORD
 
-        self.label_pass = Label(self.dataFrame, text='PASS: ')
+        self.label_pass = Label(self.dataFrame, text='PASS: ',bg=self.colorMorado, font='Times', fg=self.colorCrema)
         self.label_pass.grid(row=1, column=0, padx=5, pady=5)
 
-        self.entry_pass = Entry(self.dataFrame, textvariable=self.password)
+        self.entry_pass = Entry(self.dataFrame, textvariable=self.password, bg = self.colorCrema, show="*")
         self.entry_pass.grid(row=1, column=1, padx=5, pady=5)
 
         #Create buttons 
 
-        self.button_login = Button(self.dataFrame, text='INICIAR SESION', command = self.obtain_values)
-        self.button_login.grid(row=2, column=0, padx=5, pady=5)
+        self.button_login = Button(self.dataFrame, text='INICIAR SESION', command = self.obtain_values, bg=self.colorCeleste)
+        self.button_login.grid(row=2, column=0, padx=5, pady=10)
         
-        self.button_cancel = Button(self.dataFrame, text= 'SALIR', command=self.root.destroy)
+        self.button_cancel = Button(self.dataFrame, text= 'SALIR', command=self.root.destroy, bg=self.colorCeleste)
         self.button_cancel.grid(row=2, column=1, padx=5, pady=5)
 
         
@@ -93,16 +101,27 @@ class Main_menu(Frame):
     def __init__(self, root, username):
         super().__init__(root)
 
+        self.colorRojo= '#790614'
+        self.colorCrema = '#f9f6ec'
+        self.colorCeleste = '#88a1a8'
+        self.colorMorado = '#502940'
+        self.colorNegro = '#0d0c0c'
+
+        self.logo = PhotoImage(file='images/carrito.gif')
+        self.logo = self.logo.subsample(3)
+
         self.userNameActual = username
         self.root = root
         self.root.title(f'Sistema de Ventas')
         self.root.geometry('500x250')
 
+        self.fondo1 = Label(self.root, image=self.logo).place(x=0, y=0, relheight=1, relwidth=1)
+
         self.userAdmin = False
 
         #Instanciando el menu archivo
         self.menu = Menu(self.root)
-        self.root.config(menu = self.menu)
+        self.root.config(menu = self.menu, bg = self.colorMorado)
 
         self.dataJson = {}
         self.obtain_data_json()
@@ -113,6 +132,7 @@ class Main_menu(Frame):
 
         #Creando Menu Archivo
         self.file = Menu(self.menu, tearoff=0)
+
         self.file.add_command(label='Clientes', command=self.display_ci)
         self.file.add_command(label='Productos', command=self.display_pi)
 

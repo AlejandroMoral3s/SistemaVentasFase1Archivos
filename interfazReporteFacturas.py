@@ -209,7 +209,3 @@ class Report_Interface(Frame):
 
         reportePdf = ReporteFacturas()
         reportePdf.getIDS(listaIds)
-
-root = Tk()
-Report_Interface(root)
-root.mainloop()
