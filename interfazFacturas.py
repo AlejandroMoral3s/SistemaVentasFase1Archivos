@@ -235,7 +235,3 @@ class Create_Factura(Frame):
             
             messagebox.showinfo('INFORMACION DE FACTURACION', 'La factura se creo correctamente.')
             self.root.destroy()
-
-root = Tk()
-Create_Factura(root)
-root.mainloop()
