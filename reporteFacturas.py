@@ -5,14 +5,13 @@ import random
 ##	210 x 297 mm
 class ReporteFacturas():
     
-    name = 'hoja' #random.randint(1,1000)
+    name =  random.randint(1,1000)
     factura = FacturasList()
     facturaList = factura.dataJson['facturas']
     facturasReporte = []
     prodSTR = ""
     listanombreproductos = []
     ids = []
-    
     
     def header(self, pdf):
         # Logo
@@ -27,6 +26,7 @@ class ReporteFacturas():
         
     
     def getIDS(self, idsList):
+        self.name = random.randint(1,1000)
         self.ids=idsList 
         self.crearTabla()       
     
@@ -41,6 +41,7 @@ class ReporteFacturas():
     
     def setTabla(self,pdf):
         pdf.set_font('Times','',12)
+        print(self.facturasReporte)
         for fact in self.facturasReporte: 
             for prod in fact["_Factura__productos"]:
                 self.listanombreproductos.append(prod['_Producto__descripcion'])
@@ -58,6 +59,7 @@ class ReporteFacturas():
         
     
     def getFacturas(self,pdf):
+        self.facturasReporte = []
         for id in self.ids:
             for fact in self.facturaList:
                 if(fact['_Factura__id']==id):

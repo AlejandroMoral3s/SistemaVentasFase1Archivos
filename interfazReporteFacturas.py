@@ -209,3 +209,4 @@ class Report_Interface(Frame):
 
         reportePdf = ReporteFacturas()
         reportePdf.getIDS(listaIds)
+

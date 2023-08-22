@@ -189,8 +189,10 @@ class Client_Interface(Frame):
                     x['_Cliente__fechaIng']])
 
         self.contadorRegistros = 0
-        self.tree.selection_set(self.tree.get_children()[self.contadorRegistros])
-        self.tree.focus(self.tree.focus(self.tree.get_children()[self.contadorRegistros]))
+        
+        if len(self.tree.get_children()) != 0:
+            self.tree.selection_set(self.tree.get_children()[self.contadorRegistros])
+            self.tree.focus(self.tree.focus(self.tree.get_children()[self.contadorRegistros]))
 
         self.tree.grid(row=8, column=0, columnspan=10, padx=15, pady=15)
 
@@ -357,9 +359,9 @@ class Client_Interface(Frame):
 
             for registro in ids:
                 indexRegistroBuscado+=1
-                if self.tree.item(registro)['values'][2] == self.temp_BuscarUser.get():
+                if str(self.tree.item(registro)['values'][2]) == self.temp_BuscarUser.get():
                     break
-            
+
             self.tree.selection_set(ids[indexRegistroBuscado])
             self.contadorRegistros = indexRegistroBuscado
 

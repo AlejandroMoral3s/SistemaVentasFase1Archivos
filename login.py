@@ -6,6 +6,7 @@ from interfazClientes import *
 from interfazProductos import *
 from interfazFacturas import *
 from interfazCambioClave import *
+from interfazReporteFacturas import *
 
 class Login_window(Frame):
 
@@ -70,7 +71,7 @@ class Login_window(Frame):
         self.button_login.grid(row=2, column=0, padx=5, pady=10)
         
         self.button_cancel = Button(self.dataFrame, text= 'SALIR', command=self.root.destroy, bg=self.colorCeleste)
-        self.button_cancel.grid(row=2, column=1, padx=5, pady=5)
+        self.button_cancel.grid(row=2, column=1, padx=5, pady=5, sticky='ew')
 
         
 
@@ -152,7 +153,7 @@ class Main_menu(Frame):
         self.movements = Menu(self.menu, tearoff=0)
         self.movements.add_command(label='Nueva Factura', command=self.display_fi)
         if self.userAdmin:
-            self.movements.add_command(label='Reporte de Facturas')
+            self.movements.add_command(label='Reporte de Facturas', command=self.display_rf)
         else:
             self.movements.add_command(label='Reporte de Facturas', state=DISABLED)
 
@@ -175,6 +176,11 @@ class Main_menu(Frame):
             dataJson = json.loads(data)
             self.dataJson = dataJson
         
+    def display_rf(self):
+        root = Tk()
+        Report_Interface(root)
+        root.mainloop()
+
     def display_cc(self):
         root = Tk()
         Cambio_Clave_Interfaz(root,self.userNameActual)

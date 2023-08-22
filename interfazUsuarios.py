@@ -147,8 +147,10 @@ class User_Interface(Frame):
             self.tree.insert('', 'end', values=[x['_Usuario__id'], x['_Usuario__nombreUsuario'], x['_Usuario__nombre'], x['_Usuario__apellido'], x['_Usuario__perfil'], x['_Usuario__clave'], x['_Usuario__confirmacion']])
 
         self.contadorRegistros = 0
-        self.tree.selection_set(self.tree.get_children()[self.contadorRegistros])
-        self.tree.focus(self.tree.focus(self.tree.get_children()[self.contadorRegistros]))
+
+        if len(self.tree.get_children()) != 0:
+            self.tree.selection_set(self.tree.get_children()[self.contadorRegistros])
+            self.tree.focus(self.tree.focus(self.tree.get_children()[self.contadorRegistros]))
 
         self.tree.grid(row=7, column=0, columnspan=10, padx=15, pady=15)
 
@@ -300,7 +302,7 @@ class User_Interface(Frame):
 
             for registro in ids:
                 indexRegistroBuscado+=1
-                if self.tree.item(registro)['values'][1] == self.temp_BuscarUser.get():
+                if str(self.tree.item(registro)['values'][1]) == self.temp_BuscarUser.get():
                     break
             
             self.tree.selection_set(ids[indexRegistroBuscado])

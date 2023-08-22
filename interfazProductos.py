@@ -48,9 +48,9 @@ class Product_Interface(Frame):
         self.priceEntry.grid(row=2, column=2, columnspan=3, sticky='ew', padx=(0,15), pady=(15,15))
 
         # PROFILE
-        self.ivaLabel = Label(self.root, text='IVA: ', background=self.colorFondo, fg='white')
+        self.ivaLabel = Label(self.root, text='IVA (%): ', background=self.colorFondo, fg='white')
         self.ivaLabel.grid(row=2, column=5, columnspan=2, sticky='ew', padx=(15,0), pady=(15,15))
-        self.ivaEntry = ttk.Combobox(self.root, state='disabled', values=['5%', '12%'], textvariable=self.temp_iva)
+        self.ivaEntry = ttk.Combobox(self.root, state='disabled', values=['5', '12'], textvariable=self.temp_iva)
         self.ivaEntry.grid(row=2, column=7, columnspan=3, sticky='ew', padx=(0,15), pady=(15,15))
 
         # LAST NAMES
@@ -111,7 +111,7 @@ class Product_Interface(Frame):
         self.tree.heading('product_id', text='ID')
         self.tree.heading('description', text='DESCRIPCION')
         self.tree.heading('price', text='PRECIO')
-        self.tree.heading('iva', text='IVA')
+        self.tree.heading('iva', text='IVA (%)')
         self.tree.heading('note', text='NOTA')
 
         self.tree.column('#1', width=70, anchor='center')
@@ -134,8 +134,10 @@ class Product_Interface(Frame):
                                  x['_Producto__nota']])
 
         self.contadorRegistros = 0
-        self.tree.selection_set(self.tree.get_children()[self.contadorRegistros])
-        self.tree.focus(self.tree.focus(self.tree.get_children()[self.contadorRegistros]))
+
+        if len(self.tree.get_children()) != 0:
+            self.tree.selection_set(self.tree.get_children()[self.contadorRegistros])
+            self.tree.focus(self.tree.focus(self.tree.get_children()[self.contadorRegistros]))
 
         self.tree.grid(row=6, column=0, columnspan=10, padx=15, pady=15)
 
@@ -273,7 +275,7 @@ class Product_Interface(Frame):
 
             for registro in ids:
                 indexRegistroBuscado+=1
-                if self.tree.item(registro)['values'][1] == self.temp_BuscarUser.get():
+                if str(self.tree.item(registro)['values'][1]) == self.temp_BuscarUser.get():
                     break
             
             self.tree.selection_set(ids[indexRegistroBuscado])

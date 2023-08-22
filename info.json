@@ -6,8 +6,8 @@
             "_Usuario__nombre": "Alejandro",
             "_Usuario__apellido": "Morales",
             "_Usuario__nombreUsuario": "ale26",
-            "_Usuario__clave": "123",
-            "_Usuario__confirmacion": "123"
+            "_Usuario__clave": "145",
+            "_Usuario__confirmacion": "145"
         },
         {
             "_Usuario__id": 2,
@@ -15,60 +15,111 @@
             "_Usuario__nombre": "Pablo",
             "_Usuario__apellido": "Obregon",
             "_Usuario__nombreUsuario": "pablo16",
-            "_Usuario__clave": "546",
-            "_Usuario__confirmacion": "546"
+            "_Usuario__clave": "123",
+            "_Usuario__confirmacion": "123"
         }
     ],
     "clients": [
         {
             "_Cliente__id": 1,
             "_Cliente__tipoDocumento": "DPI",
-            "_Cliente__noDocumento": "12345",
-            "_Cliente__nombre": "Alejandro",
-            "_Cliente__apellido": "Morales",
-            "_Cliente__direccion": "zona 3",
-            "_Cliente__telefono": "42871602",
-            "_Cliente__ciudad": "Tactic",
-            "_Cliente__fechaNac": "5/26/02",
-            "_Cliente__fechaIng": "8/18/23"
+            "_Cliente__noDocumento": "123456",
+            "_Cliente__nombre": "Alfredo",
+            "_Cliente__apellido": "Casanova",
+            "_Cliente__direccion": "zona 1",
+            "_Cliente__telefono": "321354",
+            "_Cliente__ciudad": "Coban",
+            "_Cliente__fechaNac": "8/11/04",
+            "_Cliente__fechaIng": "8/21/23"
         },
         {
             "_Cliente__id": 2,
+            "_Cliente__tipoDocumento": "DPI",
+            "_Cliente__noDocumento": "123458",
+            "_Cliente__nombre": "Samy",
+            "_Cliente__apellido": "Gonzales",
+            "_Cliente__direccion": "zona 1",
+            "_Cliente__telefono": "32461321",
+            "_Cliente__ciudad": "Tactic",
+            "_Cliente__fechaNac": "8/10/04",
+            "_Cliente__fechaIng": "8/21/23"
+        },
+        {
+            "_Cliente__id": 3,
             "_Cliente__tipoDocumento": "PASAPORTE",
-            "_Cliente__noDocumento": "12346",
-            "_Cliente__nombre": "Rafael",
-            "_Cliente__apellido": "Ortiz",
-            "_Cliente__direccion": "zona 5",
-            "_Cliente__telefono": "3465421",
-            "_Cliente__ciudad": "Chamelco",
-            "_Cliente__fechaNac": "8/1/23",
-            "_Cliente__fechaIng": "8/18/23"
+            "_Cliente__noDocumento": "123457",
+            "_Cliente__nombre": "Cecilia",
+            "_Cliente__apellido": "Perez",
+            "_Cliente__direccion": "zona 8",
+            "_Cliente__telefono": "65132135",
+            "_Cliente__ciudad": "Carch\u00e1",
+            "_Cliente__fechaNac": "8/20/03",
+            "_Cliente__fechaIng": "8/21/23"
         }
     ],
     "products": [
         {
             "_Producto__id": 1,
-            "_Producto__descripcion": "tomate",
-            "_Producto__precio": 4.5,
+            "_Producto__descripcion": "Manzana",
+            "_Producto__precio": "3",
             "_Producto__iva": "5",
-            "_Producto__nota": "vegetal"
+            "_Producto__nota": "Saludable",
+            "_Producto__cant": 0,
+            "_Producto__subtotal": 0
         },
         {
             "_Producto__id": 2,
-            "_Producto__descripcion": "cebolla",
-            "_Producto__precio": 4.5,
-            "_Producto__iva": "12",
-            "_Producto__nota": "vegetal"
-        },
-        {
-            "_Producto__id": 3,
-            "_Producto__descripcion": "tamarindo",
-            "_Producto__precio": "2.1",
-            "_Producto__iva": "12",
-            "_Producto__nota": "Fruta"
+            "_Producto__descripcion": "Pera",
+            "_Producto__precio": "2.5",
+            "_Producto__iva": "5",
+            "_Producto__nota": "Saludable",
+            "_Producto__cant": 0,
+            "_Producto__subtotal": 0
         }
     ],
     "facturas": [
-        
+        {
+            "_Factura__id": 1,
+            "_Factura__fecha": "8/21/23",
+            "_Factura__cliente": "Alfredo",
+            "_Factura__productos": [
+                {
+                    "_Producto__id": 1,
+                    "_Producto__descripcion": "Manzana",
+                    "_Producto__precio": "3",
+                    "_Producto__iva": "5",
+                    "_Producto__nota": "Saludable",
+                    "_Producto__cant": "3",
+                    "_Producto__subtotal": 9.45
+                },
+                {
+                    "_Producto__id": 2,
+                    "_Producto__descripcion": "Pera",
+                    "_Producto__precio": "2.5",
+                    "_Producto__iva": "5",
+                    "_Producto__nota": "Saludable",
+                    "_Producto__cant": "5",
+                    "_Producto__subtotal": 13.125
+                }
+            ],
+            "_Factura__total": 22.5
+        },
+        {
+            "_Factura__id": 2,
+            "_Factura__fecha": "8/21/23",
+            "_Factura__cliente": "Samy",
+            "_Factura__productos": [
+                {
+                    "_Producto__id": 1,
+                    "_Producto__descripcion": "Manzana",
+                    "_Producto__precio": "3",
+                    "_Producto__iva": "5",
+                    "_Producto__nota": "Saludable",
+                    "_Producto__cant": "4",
+                    "_Producto__subtotal": 12.6
+                }
+            ],
+            "_Factura__total": 12.6
+        }
     ]
 }
