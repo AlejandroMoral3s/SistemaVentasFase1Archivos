@@ -41,7 +41,6 @@ class ReporteFacturas():
     
     def setTabla(self,pdf):
         pdf.set_font('Times','',12)
-        print(self.facturasReporte)
         for fact in self.facturasReporte: 
             for prod in fact["_Factura__productos"]:
                 self.listanombreproductos.append(prod['_Producto__descripcion'])
