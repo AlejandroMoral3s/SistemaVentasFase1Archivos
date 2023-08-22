@@ -5,6 +5,7 @@ from interfazUsuarios import *
 from interfazClientes import *
 from interfazProductos import *
 from interfazFacturas import *
+from interfazCambioClave import *
 
 class Login_window(Frame):
 
@@ -142,7 +143,7 @@ class Main_menu(Frame):
             self.file.add_command(label='Usuarios', state=DISABLED)
 
         self.file.add_separator()
-        self.file.add_command(label='Cambio de Clave')
+        self.file.add_command(label='Cambio de Clave', command=self.display_cc)
         self.file.add_command(label='Cambio de Usuario', command= self.userChange)
         self.file.add_separator()
         self.file.add_command(label='Salir', command=self.out)
@@ -174,6 +175,11 @@ class Main_menu(Frame):
             dataJson = json.loads(data)
             self.dataJson = dataJson
         
+    def display_cc(self):
+        root = Tk()
+        Cambio_Clave_Interfaz(root,self.userNameActual)
+        root.mainloop()
+    
     def display_ui(self):
         root = Tk()
         User_Interface(root)

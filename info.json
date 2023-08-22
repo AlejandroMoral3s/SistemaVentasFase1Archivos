@@ -15,8 +15,8 @@
             "_Usuario__nombre": "Pablo",
             "_Usuario__apellido": "Obregon",
             "_Usuario__nombreUsuario": "pablo16",
-            "_Usuario__clave": "145",
-            "_Usuario__confirmacion": "145"
+            "_Usuario__clave": "546",
+            "_Usuario__confirmacion": "546"
         }
     ],
     "clients": [
@@ -68,7 +68,5 @@
             "_Producto__nota": "Fruta"
         }
     ],
-    "facturas": [
-        
-    ]
+    "facturas": []
 }

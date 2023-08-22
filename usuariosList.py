@@ -54,6 +54,13 @@ class UsuariosList:
         else:
             print("Este usuario no existe")
     
+    def cambiarClaveUsuario(self, username, nuevaClave, nuevaConfirmacion):
+        usTemp= self.buscarUser(username)
+        if (usTemp!=None):
+            usTemp['_Usuario__clave'] = nuevaClave
+            usTemp['_Usuario__confirmacion'] = nuevaConfirmacion
+            self.guardar()
+
     def borrarUsuario(self, username):
         usTemp = self.buscarUser(username)
         if(usTemp!=None):
