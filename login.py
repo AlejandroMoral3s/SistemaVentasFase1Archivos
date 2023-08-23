@@ -7,6 +7,7 @@ from interfazProductos import *
 from interfazFacturas import *
 from interfazCambioClave import *
 from interfazReporteFacturas import *
+from interfazAyuda import *
 
 class Login_window(Frame):
 
@@ -159,8 +160,8 @@ class Main_menu(Frame):
 
         #Creando Menu Ayuda
         self.help = Menu(self.menu, tearoff=0)
-        self.help.add_command(label='Acerca de')
-        self.help.add_command(label='Ayuda')
+        self.help.add_command(label='Acerca de', command=self.display_help)
+        #self.help.add_command(label='Ayuda')
 
         #Creando las pesatanias del menu
 
@@ -176,6 +177,12 @@ class Main_menu(Frame):
             dataJson = json.loads(data)
             self.dataJson = dataJson
         
+
+    def display_help(self):
+        root = Tk()
+        Help_Interface(root)
+        root.mainloop()
+
     def display_rf(self):
         root = Tk()
         Report_Interface(root)
