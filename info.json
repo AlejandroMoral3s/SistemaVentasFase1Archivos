@@ -6,8 +6,8 @@
             "_Usuario__nombre": "Alejandro",
             "_Usuario__apellido": "Morales",
             "_Usuario__nombreUsuario": "ale26",
-            "_Usuario__clave": "145",
-            "_Usuario__confirmacion": "145"
+            "_Usuario__clave": "2605",
+            "_Usuario__confirmacion": "2605"
         },
         {
             "_Usuario__id": 2,
@@ -17,6 +17,15 @@
             "_Usuario__nombreUsuario": "pablo16",
             "_Usuario__clave": "123",
             "_Usuario__confirmacion": "123"
+        },
+        {
+            "_Usuario__id": 3,
+            "_Usuario__perfil": "Vendedor",
+            "_Usuario__nombre": "Mariana",
+            "_Usuario__apellido": "Ac",
+            "_Usuario__nombreUsuario": "mariana21",
+            "_Usuario__clave": "2103",
+            "_Usuario__confirmacion": "2103"
         }
     ],
     "clients": [
@@ -46,15 +55,15 @@
         },
         {
             "_Cliente__id": 3,
-            "_Cliente__tipoDocumento": "PASAPORTE",
-            "_Cliente__noDocumento": "123457",
-            "_Cliente__nombre": "Cecilia",
-            "_Cliente__apellido": "Perez",
-            "_Cliente__direccion": "zona 8",
-            "_Cliente__telefono": "65132135",
-            "_Cliente__ciudad": "Carch\u00e1",
-            "_Cliente__fechaNac": "8/20/03",
-            "_Cliente__fechaIng": "8/21/23"
+            "_Cliente__tipoDocumento": "DPI",
+            "_Cliente__noDocumento": "6516541",
+            "_Cliente__nombre": "Ana",
+            "_Cliente__apellido": "Martinez",
+            "_Cliente__direccion": "zona 15",
+            "_Cliente__telefono": "6461",
+            "_Cliente__ciudad": "Tactic",
+            "_Cliente__fechaNac": "8/15/02",
+            "_Cliente__fechaIng": "8/24/23"
         }
     ],
     "products": [
@@ -75,51 +84,18 @@
             "_Producto__nota": "Saludable",
             "_Producto__cant": 0,
             "_Producto__subtotal": 0
+        },
+        {
+            "_Producto__id": 3,
+            "_Producto__descripcion": "Aceite",
+            "_Producto__precio": "8",
+            "_Producto__iva": "12",
+            "_Producto__nota": "Cocina",
+            "_Producto__cant": 0,
+            "_Producto__subtotal": 0
         }
     ],
     "facturas": [
-        {
-            "_Factura__id": 1,
-            "_Factura__fecha": "8/21/23",
-            "_Factura__cliente": "Alfredo",
-            "_Factura__productos": [
-                {
-                    "_Producto__id": 1,
-                    "_Producto__descripcion": "Manzana",
-                    "_Producto__precio": "3",
-                    "_Producto__iva": "5",
-                    "_Producto__nota": "Saludable",
-                    "_Producto__cant": "3",
-                    "_Producto__subtotal": 9.45
-                },
-                {
-                    "_Producto__id": 2,
-                    "_Producto__descripcion": "Pera",
-                    "_Producto__precio": "2.5",
-                    "_Producto__iva": "5",
-                    "_Producto__nota": "Saludable",
-                    "_Producto__cant": "5",
-                    "_Producto__subtotal": 13.125
-                }
-            ],
-            "_Factura__total": 22.5
-        },
-        {
-            "_Factura__id": 2,
-            "_Factura__fecha": "8/21/23",
-            "_Factura__cliente": "Samy",
-            "_Factura__productos": [
-                {
-                    "_Producto__id": 1,
-                    "_Producto__descripcion": "Manzana",
-                    "_Producto__precio": "3",
-                    "_Producto__iva": "5",
-                    "_Producto__nota": "Saludable",
-                    "_Producto__cant": "4",
-                    "_Producto__subtotal": 12.6
-                }
-            ],
-            "_Factura__total": 12.6
-        }
+        
     ]
 }
