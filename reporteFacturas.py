@@ -4,7 +4,7 @@ import random
 
 ##	210 x 297 mm
 class ReporteFacturas():
-    
+
     name =  random.randint(1,1000)
     factura = FacturasList()
     facturaList = factura.dataJson['facturas']
@@ -26,8 +26,10 @@ class ReporteFacturas():
         
     
     def getIDS(self, idsList):
+        self.facturaList = self.factura.dataJson['facturas']
         self.name = random.randint(1,1000)
         self.ids=idsList 
+        
         self.crearTabla()       
     
     def setEncabezado(self, pdf):
@@ -41,10 +43,13 @@ class ReporteFacturas():
     
     def setTabla(self,pdf):
         pdf.set_font('Times','',12)
+
+        
         for fact in self.facturasReporte: 
+            self.listanombreproductos = []
             for prod in fact["_Factura__productos"]:
                 self.listanombreproductos.append(prod['_Producto__descripcion'])
-            
+        
             self.prodSTR = ' , '.join(self.listanombreproductos) 
             
             pdf.cell(w=10,h=10,txt=f'{fact["_Factura__id"]}', border=1, align='C',fill=0)
@@ -57,7 +62,10 @@ class ReporteFacturas():
         pdf.output(f'reportes/{self.name}.pdf')
         
     
+
     def getFacturas(self,pdf):
+        self.factura = FacturasList()
+        self.facturaList = self.factura.dataJson['facturas']
         self.facturasReporte = []
         for id in self.ids:
             for fact in self.facturaList:

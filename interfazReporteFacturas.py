@@ -207,6 +207,8 @@ class Report_Interface(Frame):
         for row in self.tree.get_children():
             listaIds.append(int(self.tree.item(row)['values'][0]))
 
+        
+
         reportePdf = ReporteFacturas()
         reportePdf.getIDS(listaIds)
 

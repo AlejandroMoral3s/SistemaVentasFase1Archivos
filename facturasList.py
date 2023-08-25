@@ -38,16 +38,16 @@ class FacturasList:
     def agregarProductos(self, nombre, cant):
         prod = self.objProd.buscarProducto(nombre)
         prod['_Producto__cant'] = cant
-        prod['_Producto__subtotal'] = (float(prod['_Producto__precio'])*int(prod['_Producto__cant']))
-        iva = prod['_Producto__subtotal']*(int(prod['_Producto__iva'])/100)
+        prod['_Producto__subtotal'] = round((float(prod['_Producto__precio'])*int(prod['_Producto__cant'])),2)
+        iva = round(prod['_Producto__subtotal']*(int(prod['_Producto__iva'])/100),2)
         prod['_Producto__subtotal']+=iva
         self.productos.append(prod)        
-        self.total += round(prod['_Producto__subtotal'],1)
+        self.total += round(prod['_Producto__subtotal'],2)
     
 #PENDIENTE------------------------------------------------------
     def eliminarProducto(self, parametro):
         prod = self.objProd.buscarProducto(parametro)
-        self.total -= round(float(prod['_Producto__subtotal']), 1)
+        self.total -= round(float(prod['_Producto__subtotal']), 2)
         self.productos.remove(prod)
         
     def limpiarFactura(self):
